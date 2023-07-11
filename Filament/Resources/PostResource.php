@@ -74,7 +74,15 @@ class PostResource extends Resource
                                 'sm' => 2,
                             ]),
 
-                        self::getContentEditor('content'),
+                        //self::getContentEditor('content'),
+
+                        \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
+                        ->profile('demo')
+                        ->template('icons')
+                        ->columnSpan([
+                            'sm' => 2,
+                        ]),
+
 
                         Forms\Components\BelongsToSelect::make('blog_author_id')
                             ->label(__('filament-blog::filament-blog.author'))
