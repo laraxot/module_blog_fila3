@@ -1,23 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Str;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Resources\Form;
-use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Modules\Blog\Filament\Resources\PostResource\Pages;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Traits\HasContentEditor;
-use Modules\Blog\Filament\Resources\PostResource\Pages;
-
 use Savannabits\FilamentModules\Concerns\ContextualResource;
-
-use function now;
 
 class PostResource extends Resource
 {
@@ -26,7 +25,7 @@ class PostResource extends Resource
 
     protected static ?string $model = Post::class;
 
-    //protected static ?string $slug = 'blog/posts';
+    // protected static ?string $slug = 'blog/posts';
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -34,7 +33,7 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    //protected static ?int $navigationSort = 0;
+    // protected static ?int $navigationSort = 0;
 
     public static function form(Form $form): Form
     {
@@ -57,7 +56,7 @@ class PostResource extends Resource
                         Forms\Components\Textarea::make('excerpt')
                             ->label(__('filament-blog::filament-blog.excerpt'))
                             ->rows(2)
-                            ->minLength(50)
+                            // ->minLength(50)
                             ->maxLength(1000)
                             ->columnSpan([
                                 'sm' => 2,
@@ -74,7 +73,7 @@ class PostResource extends Resource
                                 'sm' => 2,
                             ]),
 
-                        //self::getContentEditor('content'),
+                        // self::getContentEditor('content'),
 
                         \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                         ->profile('demo')
@@ -83,18 +82,19 @@ class PostResource extends Resource
                             'sm' => 2,
                         ]),
 
-
                         Forms\Components\BelongsToSelect::make('blog_author_id')
                             ->label(__('filament-blog::filament-blog.author'))
                             ->relationship('author', 'name')
                             ->searchable()
-                            ->required(),
+                        // ->required()
+                        ,
 
                         Forms\Components\BelongsToSelect::make('blog_category_id')
                             ->label(__('filament-blog::filament-blog.category'))
                             ->relationship('category', 'name')
                             ->searchable()
-                            ->required(),
+                        // ->required()
+                        ,
 
                         Forms\Components\DatePicker::make('published_at')
                             ->label(__('filament-blog::filament-blog.published_date')),
@@ -151,9 +151,9 @@ class PostResource extends Resource
                 Tables\Filters\Filter::make('published_at')
                     ->form([
                         Forms\Components\DatePicker::make('published_from')
-                            ->placeholder(fn ($state): string => 'Dec 18, '.now()->subYear()->format('Y')),
+                            ->placeholder(fn ($state): string => 'Dec 18, '.\now()->subYear()->format('Y')),
                         Forms\Components\DatePicker::make('published_until')
-                            ->placeholder(fn ($state): string => now()->format('M d, Y')),
+                            ->placeholder(fn ($state): string => \now()->format('M d, Y')),
                     ])
                     ->query(function (Builder $query, array $data): Builder {
                         return $query
@@ -172,7 +172,6 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
