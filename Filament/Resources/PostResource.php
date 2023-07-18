@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Modules\Blog\Filament\Resources\PostResource\Pages;
 use Modules\Blog\Models\Post;
@@ -37,10 +38,23 @@ class PostResource extends Resource
 
     public static function form(Form $form): Form
     {
+        $locale = session()->get('locale') ?? request()->get('locale') ?? request()->cookie('filament_language_switch_locale') ?? config('app.locale', 'en');
+        // dddx(['locale' => $locale, 'app_locale' => app()->getLocale()]);
+        App::setLocale($locale);
+
         return $form
             ->schema([
                 Forms\Components\Card::make()
                     ->schema([
+                        /*
+                        Forms\Components\Select::make('lang')
+                            ->reactive()
+                            ->options(['it' => 'it', 'en' => 'en', 'fr' => 'fr', 'de' => 'de'])
+                            ->afterStateUpdated(function ($state, callable $set) {
+                                App::setLocale($state);
+                            })
+                            ->default('it'),
+                        */
                         Forms\Components\TextInput::make('title')
                             ->label(__('filament-blog::filament-blog.title'))
                             ->required()

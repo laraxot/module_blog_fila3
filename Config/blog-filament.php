@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -17,6 +19,7 @@ $moduleName = 'Blog';
 $moduleNs = 'Modules\Blog';
 $contextNs = 'Modules\\Blog\\Filament';
 $contextPath = 'Filament';
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +93,7 @@ return [
         'namespace' => $contextNs.'\\Widgets',
         'path' => base_path('Modules/'.$moduleName."/$contextPath/Widgets"),
         'register' => [
-            //Widgets\AccountWidget::class,
+            // Widgets\AccountWidget::class,
             // ////Widgets\FilamentInfoWidget::class,
         ],
     ],
@@ -152,6 +155,7 @@ return [
             SubstituteBindings::class,
             DispatchServingFilamentEvent::class,
             MirrorConfigToSubpackages::class,
+            // BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale::class,
         ],
     ],
 ];
