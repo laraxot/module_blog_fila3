@@ -70,7 +70,11 @@ class PostResource extends Resource
                         Forms\Components\Textarea::make('excerpt')
                             ->label(__('filament-blog::filament-blog.excerpt'))
                             ->rows(2)
+<<<<<<< HEAD
                             // ->minLength(50)
+=======
+                            //->minLength(50)
+>>>>>>> 0aa419f (up)
                             ->maxLength(1000)
                             ->columnSpan([
                                 'sm' => 2,
@@ -100,21 +104,32 @@ class PostResource extends Resource
                             ->label(__('filament-blog::filament-blog.author'))
                             ->relationship('author', 'name')
                             ->searchable()
+<<<<<<< HEAD
                         // ->required()
                         ,
+=======
+                            //->required()
+                            ,
+>>>>>>> 0aa419f (up)
 
                         Forms\Components\BelongsToSelect::make('blog_category_id')
                             ->label(__('filament-blog::filament-blog.category'))
                             ->relationship('category', 'name')
                             ->searchable()
+<<<<<<< HEAD
                         // ->required()
                         ,
+=======
+                            //->required()
+                            ,
+>>>>>>> 0aa419f (up)
 
                         Forms\Components\DatePicker::make('published_at')
                             ->label(__('filament-blog::filament-blog.published_date')),
                         SpatieTagsInput::make('tags')
                             ->label(__('filament-blog::filament-blog.tags'))
-                            ->required(),
+                            //->required()
+                            ,
                     ])
                     ->columns([
                         'sm' => 2,

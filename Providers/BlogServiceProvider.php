@@ -1,114 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Request;
+use Modules\Tenant\Services\TenantService;
+use Modules\Xot\Providers\XotBaseServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale;
+use Illuminate\Routing\Router;
 
-class BlogServiceProvider extends ServiceProvider
+class BlogServiceProvider extends XotBaseServiceProvider
 {
-    /**
-     * @var string $moduleName
-     */
-    protected $moduleName = 'Blog';
+    protected string $module_dir = __DIR__;
 
-    /**
-     * @var string $moduleNameLower
-     */
-    protected $moduleNameLower = 'blog';
+    protected string $module_ns = __NAMESPACE__;
 
-    /**
-     * Boot the application events.
-     *
-     * @return void
-     */
-    public function boot()
+    public string $module_name = 'blog';
+
+    public function bootCallback(): void
     {
-        $this->registerTranslations();
-        $this->registerConfig();
-        $this->registerViews();
-        $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        //$kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+        //$kernel->pushMiddleware(SwitchLanguageLocale::class);
+        $router = app('router');
+        $this->registerMyMiddleware($router);
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
+
+
+    public function registerCallback(): void
     {
-        $this->app->register(RouteServiceProvider::class);
     }
 
-    /**
-     * Register config.
-     *
-     * @return void
-     */
-    protected function registerConfig()
+    public function registerMyMiddleware(Router $router): void
     {
-        $this->publishes([
-            module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
-        ], 'config');
-        $this->mergeConfigFrom(
-            module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
-        );
-    }
-
-    /**
-     * Register views.
-     *
-     * @return void
-     */
-    public function registerViews()
-    {
-        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
-
-        $sourcePath = module_path($this->moduleName, 'Resources/views');
-
-        $this->publishes([
-            $sourcePath => $viewPath
-        ], ['views', $this->moduleNameLower . '-module-views']);
-
-        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
-    }
-
-    /**
-     * Register translations.
-     *
-     * @return void
-     */
-    public function registerTranslations()
-    {
-        $langPath = resource_path('lang/modules/' . $this->moduleNameLower);
-
-        if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom($langPath);
-        } else {
-            $this->loadTranslationsFrom(module_path($this->moduleName, 'Resources/lang'), $this->moduleNameLower);
-            $this->loadJsonTranslationsFrom(module_path($this->moduleName, 'Resources/lang'));
-        }
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [];
-    }
-
-    private function getPublishableViewPaths(): array
-    {
-        $paths = [];
-        foreach (\Config::get('view.paths') as $path) {
-            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
-                $paths[] = $path . '/modules/' . $this->moduleNameLower;
-            }
-        }
-        return $paths;
+        // $router->pushMiddlewareToGroup('web', SetDefaultLocaleForUrlsMiddleware::class);
+        $router->pushMiddlewareToGroup('web', SwitchLanguageLocale::class);
+        //$router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
     }
 }

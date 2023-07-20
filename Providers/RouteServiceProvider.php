@@ -1,69 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Providers;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Router;
+use Modules\Xot\Providers\XotBaseRouteServiceProvider;
+use BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale;
 
-class RouteServiceProvider extends ServiceProvider
+class RouteServiceProvider extends XotBaseRouteServiceProvider
 {
     /**
      * The module namespace to assume when generating URLs to actions.
-     *
-     * @var string
      */
-    protected $moduleNamespace = 'Modules\Blog\Http\Controllers';
+    protected string $moduleNamespace = 'Modules\Blog\Http\Controllers';
 
-    /**
-     * Called before routes are registered.
-     *
-     * Register any model bindings or pattern based filters.
-     *
-     * @return void
-     */
-    public function boot()
+    protected string $module_dir = __DIR__;
+
+    protected string $module_ns = __NAMESPACE__;
+
+    public function bootCallback(): void
     {
-        parent::boot();
+        // 36     Cannot access offset 'router' on Illuminate\Contracts\Foundation\Application
+        // $router = $this->app['router'];
+        //$router = app('router');
+        // dddx([$router, $router1]);
+
+        // $this->registerLang();
+        //$this->registerRoutePattern($router);
+        //$this->registerMyMiddleware($router);
     }
 
-    /**
-     * Define the routes for the application.
-     *
-     * @return void
-     */
-    public function map()
+    public function registerCallback(): void
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
+        //dddx('b');
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('Blog', '/Routes/web.php'));
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->moduleNamespace)
-            ->group(module_path('Blog', '/Routes/api.php'));
-    }
+    //public function registerMyMiddleware(Router $router): void
+    //{
+    // $router->pushMiddlewareToGroup('web', SetDefaultLocaleForUrlsMiddleware::class);
+    //$router->appendMiddlewareToGroup('web', SwitchLanguageLocale::class);
+    //$router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
+    //}
 }
