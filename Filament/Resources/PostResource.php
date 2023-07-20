@@ -18,11 +18,13 @@ use Modules\Blog\Filament\Resources\PostResource\Pages;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Traits\HasContentEditor;
 use Savannabits\FilamentModules\Concerns\ContextualResource;
+use Filament\Resources\Concerns\Translatable;
 
 class PostResource extends Resource
 {
     use ContextualResource;
     use HasContentEditor;
+    use Translatable;
 
     protected static ?string $model = Post::class;
 
@@ -36,11 +38,17 @@ class PostResource extends Resource
 
     // protected static ?int $navigationSort = 0;
 
+    public static function getTranslatableLocales(): array
+    {
+        return ['en', 'es','it','de','fr','hy','zh'];
+    }
+
     public static function form(Form $form): Form
     {
-        $locale = session()->get('locale') ?? request()->get('locale') ?? request()->cookie('filament_language_switch_locale') ?? config('app.locale', 'en');
+        //$locale = session()->get('locale') ?? request()->get('locale') ?? request()->cookie('filament_language_switch_locale') ?? config('app.locale', 'en');
         // dddx(['locale' => $locale, 'app_locale' => app()->getLocale()]);
-        App::setLocale($locale);
+        //App::setLocale($locale);
+
 
         return $form
             ->schema([
@@ -59,22 +67,20 @@ class PostResource extends Resource
                             ->label(__('filament-blog::filament-blog.title'))
                             ->required()
                             ->reactive()
-                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
+                            //->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state) ))
+                            ,
 
                         Forms\Components\TextInput::make('slug')
                             ->label(__('filament-blog::filament-blog.slug'))
                             ->disabled()
-                            ->required()
-                            ->unique(Post::class, 'slug', fn ($record) => $record),
+                            //->required()
+                            //->unique(Post::class, 'slug', fn ($record) => $record)
+                            ,
 
                         Forms\Components\Textarea::make('excerpt')
                             ->label(__('filament-blog::filament-blog.excerpt'))
                             ->rows(2)
-<<<<<<< HEAD
                             // ->minLength(50)
-=======
-                            //->minLength(50)
->>>>>>> 0aa419f (up)
                             ->maxLength(1000)
                             ->columnSpan([
                                 'sm' => 2,
@@ -104,25 +110,15 @@ class PostResource extends Resource
                             ->label(__('filament-blog::filament-blog.author'))
                             ->relationship('author', 'name')
                             ->searchable()
-<<<<<<< HEAD
                         // ->required()
                         ,
-=======
-                            //->required()
-                            ,
->>>>>>> 0aa419f (up)
 
                         Forms\Components\BelongsToSelect::make('blog_category_id')
                             ->label(__('filament-blog::filament-blog.category'))
                             ->relationship('category', 'name')
                             ->searchable()
-<<<<<<< HEAD
                         // ->required()
                         ,
-=======
-                            //->required()
-                            ,
->>>>>>> 0aa419f (up)
 
                         Forms\Components\DatePicker::make('published_at')
                             ->label(__('filament-blog::filament-blog.published_date')),

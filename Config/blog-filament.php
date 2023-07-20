@@ -1,13 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 declare(strict_types=1);
 
-use Filament\Http\Middleware\Authenticate;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Http\Middleware\MirrorConfigToSubpackages;
-=======
->>>>>>> 0aa419f (up)
 use Filament\Pages;
 use Filament\Widgets;
 use Filament\Http\Middleware\Authenticate;
@@ -162,11 +156,8 @@ return [
             SubstituteBindings::class,
             DispatchServingFilamentEvent::class,
             MirrorConfigToSubpackages::class,
-<<<<<<< HEAD
             // BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale::class,
-=======
             //SwitchLanguageLocale::class,
->>>>>>> 0aa419f (up)
         ],
     ],
 ];

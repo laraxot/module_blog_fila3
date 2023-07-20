@@ -53,6 +53,47 @@ class Post extends Model implements TranslatableContract
 
     public $translatedAttributes = ['title', 'excerpt', 'content'];
 
+    public function getTranslations($field):array
+    {
+        //return $this->{$field};
+        $res=$this->getTranslationsArray();
+        
+        return $res;
+        //return ['it'=>'titleit','en'=>'titleen'];
+    }
+
+    /*errore di contratto --
+    public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): mixed{
+        return 'ciao';
+    }
+    */
+    
+    public function getTranslatableAttributes()
+    {
+        return $this->translatedAttributes;
+    }
+    /*
+    
+
+    public function setTranslation($field, $locale, $value)
+    {
+        //dddx([$a,$b,$c]);
+        $this->translateOrNew($locale)->{$field}=$value;
+        //$this->{$field}=$value;
+    }
+    */
+
+    public function setLocale($locale)
+    {
+        app()->setLocale($locale);
+        $res=$this->translateOrNew($locale);
+        $res->post_id=$this->getKey();
+        $res->save();
+        return $this;
+        //return $this->translate($locale);
+    }
+
+
     public function bannerUrl(): Attribute
     {
         return Attribute::get(fn () => asset(Storage::url($this->banner)));

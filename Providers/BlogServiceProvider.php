@@ -28,6 +28,7 @@ class BlogServiceProvider extends XotBaseServiceProvider
         //$kernel->pushMiddleware(SwitchLanguageLocale::class);
         $router = app('router');
         $this->registerMyMiddleware($router);
+
     }
 
 
@@ -41,5 +42,6 @@ class BlogServiceProvider extends XotBaseServiceProvider
         // $router->pushMiddlewareToGroup('web', SetDefaultLocaleForUrlsMiddleware::class);
         $router->pushMiddlewareToGroup('web', SwitchLanguageLocale::class);
         //$router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
+        //dddx(app()->getLocale());
     }
 }
