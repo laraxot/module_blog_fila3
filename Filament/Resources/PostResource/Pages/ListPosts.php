@@ -16,7 +16,10 @@ class ListPosts extends ListRecords
 
     protected function getActions(): array
     {
+
+        
         return [
+            ...parent::getActions(),
             Actions\LocaleSwitcher::make(),
             // ...
         ];

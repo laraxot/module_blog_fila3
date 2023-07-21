@@ -40,7 +40,8 @@ class PostResource extends Resource
 
     public static function getTranslatableLocales(): array
     {
-        return ['en', 'es','it','de','fr','hy','zh'];
+        //Armeno, Italiano, Spagnolo, Francese, Inglese, Tedesco, Portoghese, Turco, Russo, Arabo, Ebraico, Cinese
+        return ['en', 'es','it','de','fr','hy','zh','pt','ru','ar','he','tr'];
     }
 
     public static function form(Form $form): Form
@@ -64,21 +65,21 @@ class PostResource extends Resource
                             ->default('it'),
                         */
                         Forms\Components\TextInput::make('title')
-                            ->label(__('filament-blog::filament-blog.title'))
+                            ->label(__('blog::txt.title'))
                             ->required()
                             ->reactive()
-                            //->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state) ))
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state) ?? Str::uuid()))
                             ,
 
                         Forms\Components\TextInput::make('slug')
-                            ->label(__('filament-blog::filament-blog.slug'))
+                            ->label(__('blog::txt.slug'))
                             ->disabled()
                             //->required()
                             //->unique(Post::class, 'slug', fn ($record) => $record)
                             ,
 
                         Forms\Components\Textarea::make('excerpt')
-                            ->label(__('filament-blog::filament-blog.excerpt'))
+                            ->label(__('blog::txt.excerpt'))
                             ->rows(2)
                             // ->minLength(50)
                             ->maxLength(1000)
@@ -87,7 +88,7 @@ class PostResource extends Resource
                             ]),
 
                         Forms\Components\FileUpload::make('banner')
-                            ->label(__('filament-blog::filament-blog.banner'))
+                            ->label(__('blog::txt.banner'))
                             ->image()
                             ->maxSize(config('filament-blog.banner.maxSize', 5120))
                             ->imageCropAspectRatio(config('filament-blog.banner.cropAspectRatio', '16:9'))
@@ -102,28 +103,29 @@ class PostResource extends Resource
                         \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                         ->profile('demo')
                         ->template('icons')
+                        ->required()
                         ->columnSpan([
                             'sm' => 2,
                         ]),
 
                         Forms\Components\BelongsToSelect::make('blog_author_id')
-                            ->label(__('filament-blog::filament-blog.author'))
+                            ->label(__('blog::txt.author'))
                             ->relationship('author', 'name')
                             ->searchable()
                         // ->required()
                         ,
 
                         Forms\Components\BelongsToSelect::make('blog_category_id')
-                            ->label(__('filament-blog::filament-blog.category'))
+                            ->label(__('blog::txt.category'))
                             ->relationship('category', 'name')
                             ->searchable()
                         // ->required()
                         ,
 
                         Forms\Components\DatePicker::make('published_at')
-                            ->label(__('filament-blog::filament-blog.published_date')),
+                            ->label(__('blog::txt.published_date')),
                         SpatieTagsInput::make('tags')
-                            ->label(__('filament-blog::filament-blog.tags'))
+                            ->label(__('blog::txt.tags'))
                             //->required()
                             ,
                     ])
@@ -134,12 +136,12 @@ class PostResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\Placeholder::make('created_at')
-                            ->label(__('filament-blog::filament-blog.created_at'))
+                            ->label(__('blog::txt.created_at'))
                             ->content(fn (
                                 ?Post $record
                             ): string => $record ? $record->created_at->diffForHumans() : '-'),
                         Forms\Components\Placeholder::make('updated_at')
-                            ->label(__('filament-blog::filament-blog.last_modified_at'))
+                            ->label(__('blog::txt.last_modified_at'))
                             ->content(fn (
                                 ?Post $record
                             ): string => $record ? $record->updated_at->diffForHumans() : '-'),
@@ -153,23 +155,24 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('id'),
                 Tables\Columns\ImageColumn::make('banner')
-                    ->label(__('filament-blog::filament-blog.banner'))
+                    ->label(__('blog::txt.banner'))
                     ->rounded(),
                 Tables\Columns\TextColumn::make('title')
-                    ->label(__('filament-blog::filament-blog.title'))
+                    ->label(__('blog::txt.title'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('author.name')
-                    ->label(__('filament-blog::filament-blog.author_name'))
+                    ->label(__('blog::txt.author_name'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->label(__('filament-blog::filament-blog.category_name'))
+                    ->label(__('blog::txt.category_name'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('published_at')
-                    ->label(__('filament-blog::filament-blog.published_at'))
+                    ->label(__('blog::txt.published_at'))
                     ->date(),
             ])
             ->filters([
@@ -236,11 +239,11 @@ class PostResource extends Resource
 
     public static function getPluralModelLabel(): string
     {
-        return __('filament-blog::filament-blog.posts');
+        return __('blog::txt.posts');
     }
 
     public static function getModelLabel(): string
     {
-        return __('filament-blog::filament-blog.post');
+        return __('blog::txt.post');
     }
 }

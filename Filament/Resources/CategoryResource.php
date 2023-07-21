@@ -37,18 +37,18 @@ class CategoryResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('filament-blog::filament-blog.name'))
+                            ->label(__('blog::txt.name'))
                             ->required()
                             ->reactive()
                             ->afterStateUpdated(fn ($state, callable $set) => $set('slug', Str::slug($state))),
                         Forms\Components\TextInput::make('slug')
-                            ->label(__('filament-blog::filament-blog.slug'))
+                            ->label(__('blog::txt.slug'))
                             ->disabled()
                             ->required()
                             ->unique(Category::class, 'slug', fn ($record) => $record),
                         self::getContentEditor('description'),
                         Forms\Components\Toggle::make('is_visible')
-                            ->label(__('filament-blog::filament-blog.visible_to_guests'))
+                            ->label(__('blog::txt.visible_to_guests'))
                             ->default(true),
                     ])
                     ->columns([
@@ -58,10 +58,10 @@ class CategoryResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\Placeholder::make('created_at')
-                            ->label(__('filament-blog::filament-blog.created_at'))
+                            ->label(__('blog::txt.created_at'))
                             ->content(fn (?Category $record): string => $record ? $record->created_at->diffForHumans() : '-'),
                         Forms\Components\Placeholder::make('updated_at')
-                            ->label(__('filament-blog::filament-blog.last_modified_at'))
+                            ->label(__('blog::txt.last_modified_at'))
                             ->content(fn (?Category $record): string => $record ? $record->updated_at->diffForHumans() : '-'),
                     ])
                     ->columnSpan(1),
@@ -74,17 +74,17 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label(__('filament-blog::filament-blog.name'))
+                    ->label(__('blog::txt.name'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('slug')
-                    ->label(__('filament-blog::filament-blog.slug'))
+                    ->label(__('blog::txt.slug'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\BooleanColumn::make('is_visible')
-                    ->label(__('filament-blog::filament-blog.visibility')),
+                    ->label(__('blog::txt.visibility')),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->label(__('filament-blog::filament-blog.last_updated'))
+                    ->label(__('blog::txt.last_updated'))
                     ->date(),
             ])
             ->filters([
@@ -110,11 +110,11 @@ class CategoryResource extends Resource
 
     public static function getPluralModelLabel(): string
     {
-        return __('filament-blog::filament-blog.categories');
+        return __('blog::txt.categories');
     }
 
     public static function getModelLabel(): string
     {
-        return __('filament-blog::filament-blog.category');
+        return __('blog::txt.category');
     }
 }
