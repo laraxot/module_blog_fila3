@@ -26,7 +26,7 @@ class Dashboard extends BasePage
 
         return [
              //AdminWidgets::class,
-             PostsChart::class,
+             //PostsChart::class,
         ];
     }
 }
