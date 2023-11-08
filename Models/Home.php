@@ -6,8 +6,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Modules\Xot\Models\Traits\WidgetTrait;
-use Sushi\Sushi;
+// use Modules\Xot\Models\Traits\WidgetTrait;
+// use Sushi\Sushi;
 
 /**
  * @property int|null                                                              $id
@@ -35,8 +35,8 @@ use Sushi\Sushi;
  */
 class Home extends BaseModel
 {
-    use Sushi;
-    use WidgetTrait;
+    // use Sushi;
+    // use WidgetTrait;
 
     /**
      * @var string[]
@@ -44,7 +44,7 @@ class Home extends BaseModel
     protected $fillable = ['id', 'name', 'icon_src', 'created_by', 'updated_by'];
 
     /**
-     * Undocumented variable.
+     * Undocumented variabl
      *
      * @var array
      */

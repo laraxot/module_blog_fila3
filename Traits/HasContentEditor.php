@@ -4,7 +4,7 @@ namespace Modules\Blog\Traits;
 
 trait HasContentEditor
 {
-    public static function getContentEditor(string $field)
+    public static function getContentEditor(string $field): string
     {
         $defaultEditor = config('filament-blog.editor');
 

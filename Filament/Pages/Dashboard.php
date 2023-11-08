@@ -1,32 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Pages;
 
-use Filament\Pages\Dashboard as BasePage;
-use Illuminate\Contracts\Support\Htmlable;
+use Filament\Pages\Page;
 
-use Filament\Widgets\StatsOverviewWidget\Card;
-use Modules\Blog\Filament\Widgets\AdminWidgets;
-use Modules\Blog\Filament\Widgets\PostsChart;
-
-class Dashboard extends BasePage
+class Dashboard extends Page
 {
-    protected int | string | array $columnSpan = [
-        'md' => 2,
-        'xl' => 3,
-    ];
+    protected static ?string $navigationIcon = 'heroicon-o-home';
 
-    protected function getSubheading(): string | Htmlable | null
-    {
-        return 'Here you will see an overview of your tasks.';
-    }
+    protected static string $view = 'blog::filament.pages.dashboard';
 
-    protected function getWidgets(): array
-    {
-
-        return [
-             //AdminWidgets::class,
-             //PostsChart::class,
-        ];
-    }
+    // public function mount(): void {
+    //     $user = auth()->user();
+    //     if(!$user->hasRole('super-admin')){
+    //         redirect('/admin');
+    //     }
+    // }
 }

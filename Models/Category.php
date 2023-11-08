@@ -38,12 +38,12 @@ class Category extends Model
         return $this->hasMany(Post::class, 'blog_category_id', 'id');
     }
 
-    public function scopeIsVisible(Builder $query)
+    public function scopeIsVisible(Builder $query): Builder
     {
         return $query->whereIsVisible(true);
     }
 
-    public function scopeIsInvisible(Builder $query)
+    public function scopeIsInvisible(Builder $query): Builder
     {
         return $query->whereIsVisible(false);
     }

@@ -43,6 +43,11 @@ class Taggable extends BaseMorphPivot
         'custom_properties',
     ];
 
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
     protected $attributes = [
         'custom_properties' => [],
     ];

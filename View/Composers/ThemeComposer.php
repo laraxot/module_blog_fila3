@@ -13,9 +13,9 @@ class ThemeComposer
     /**
     * Undocumented function.
     *
-    * @return Collection<Article>
+    * @return \Illuminate\Database\Eloquent\Collection<int,\Modules\Blog\Models\Post>
     */
-    public function getPosts(): Collection
+    public function getPosts()
     {
         return Post::get();
     }

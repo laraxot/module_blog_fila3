@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+// use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+// use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
-class Post extends Model implements TranslatableContract
+class Post extends Model // implements TranslatableContract
 {
     use HasFactory;
     use HasTags;
-    use Translatable;
+    // use Translatable;
 
     /**
      * @var string
@@ -51,29 +51,32 @@ class Post extends Model implements TranslatableContract
         'banner_url',
     ];
 
+    /**
+     * @var array<string>
+     */
     public $translatedAttributes = ['title', 'excerpt', 'content'];
 
-    public function getTranslations($field):array
-    {
-        //return $this->{$field};
-        $res=$this->getTranslationsArray();
-        
-        return $res;
-        //return ['it'=>'titleit','en'=>'titleen'];
-    }
+    // public function getTranslations(): array
+    // {
+    //     //return $this->{$field};
+    //     $res = $this->getTranslationsArray();
+
+    //     return $res;
+    //     //return ['it'=>'titleit','en'=>'titleen'];
+    // }
 
     /*errore di contratto --
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): mixed{
         return 'ciao';
     }
     */
-    
+
     public function getTranslatableAttributes()
     {
         return $this->translatedAttributes;
     }
     /*
-    
+
 
     public function setTranslation($field, $locale, $value)
     {
@@ -86,8 +89,8 @@ class Post extends Model implements TranslatableContract
     public function setLocale($locale)
     {
         app()->setLocale($locale);
-        $res=$this->translateOrNew($locale);
-        $res->post_id=$this->getKey();
+        $res = $this->translateOrNew($locale);
+        $res->post_id = $this->getKey();
         $res->save();
         return $this;
         //return $this->translate($locale);
@@ -96,15 +99,15 @@ class Post extends Model implements TranslatableContract
 
     public function bannerUrl(): Attribute
     {
-        return Attribute::get(fn () => asset(Storage::url($this->banner)));
+        return Attribute::get(fn() => asset(Storage::url($this->banner)));
     }
 
-    public function scopePublished(Builder $query)
+    public function scopePublished(Builder $query): Builder
     {
         return $query->whereNotNull('published_at');
     }
 
-    public function scopeDraft(Builder $query)
+    public function scopeDraft(Builder $query): Builder
     {
         return $query->whereNull('published_at');
     }
