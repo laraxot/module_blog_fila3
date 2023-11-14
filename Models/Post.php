@@ -72,6 +72,11 @@ class Post extends Model // implements TranslatableContract
     }
     */
 
+    /**
+     * @return string[]
+     *
+     * @psalm-return array<string>
+     */
     public function getTranslatableAttributes()
     {
         return $this->translatedAttributes;
@@ -87,7 +92,7 @@ class Post extends Model // implements TranslatableContract
     }
     */
 
-    public function setLocale($locale)
+    public function setLocale($locale): static
     {
         app()->setLocale($locale);
         $res = $this->translateOrNew($locale);

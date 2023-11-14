@@ -43,7 +43,8 @@ abstract class BaseModel extends Model implements ModelContract
      * @var string
      */
     protected $primaryKey = 'id';
-/**
+
+    /**
      * @var bool
      */
     public $incrementing = true;
@@ -53,7 +54,8 @@ abstract class BaseModel extends Model implements ModelContract
     protected $hidden = [
         // 'password'
     ];
-/**
+
+    /**
      * @var bool
      */
     public $timestamps = true;

@@ -35,10 +35,12 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var string
      */
     protected $primaryKey = 'id';
+
     /**
      * @var bool
      */
     public $incrementing = true;
+
     /**
      * @var bool
      */
