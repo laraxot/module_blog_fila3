@@ -16,4 +16,6 @@ use Spatie\Tags\HasTags;
 
 class Profile extends BaseModel
 {
+    protected $fillable=['id','post_type','bio','created_at','updated_at','created_by','updated_by','deleted_by','first_name','surname','email','phone','address','user_id','last_name'];
+
 }
