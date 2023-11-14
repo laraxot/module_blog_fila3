@@ -11,14 +11,16 @@ class FilamentMiddleware extends Middleware
     public static string $module = 'Blog';
     public static string $context = 'filament';
 
-    private function getModule(): Module {
+    private function getModule(): Module
+    {
         return app('modules')->findOrFail(static::$module);
     }
 
     /**
      * @throws \Exception
      */
-    private function getContextName(): string {
+    private function getContextName(): string
+    {
         $module = $this->getModule();
         if (!static::$context) {
             throw new \Exception("Context has to be defined in your class");

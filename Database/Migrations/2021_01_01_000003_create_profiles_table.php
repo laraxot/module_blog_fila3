@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
-
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
@@ -43,7 +42,6 @@ class CreateProfilesTable extends XotBaseMigration
                     $table->renameColumn('auth_user_id', 'user_id');
                 }
                 */
-
             }
         );
     }

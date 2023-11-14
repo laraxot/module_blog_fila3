@@ -1,7 +1,9 @@
 <?php
+
 /**
  * ---.
  */
+
 declare(strict_types=1);
 
 namespace Modules\Blog\Models;
@@ -42,8 +44,7 @@ class Home extends BaseModel
      * @var string[]
      */
     protected $fillable = ['id', 'name', 'icon_src', 'created_by', 'updated_by'];
-
-    /**
+/**
      * Undocumented variabl
      *
      * @var array

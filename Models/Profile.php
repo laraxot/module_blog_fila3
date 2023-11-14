@@ -14,4 +14,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
-class Profile extends BaseModel {}
+class Profile extends BaseModel
+{
+}

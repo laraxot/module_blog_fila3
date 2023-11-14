@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
@@ -41,6 +40,4 @@ class CreateCategoriesTable extends XotBaseMigration
             }
         );
     }
-
-
 };

@@ -18,6 +18,7 @@ class Post extends Model // implements TranslatableContract
 {
     use HasFactory;
     use HasTags;
+
     // use Translatable;
 
     /**

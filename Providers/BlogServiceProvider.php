@@ -30,7 +30,6 @@ class BlogServiceProvider extends XotBaseServiceProvider
         $router = app('router');
         $this->registerMyMiddleware($router);
         $this->registerRoutes($router);
-
     }
 
     public function registerRoutes(Router $router): void
@@ -45,7 +44,6 @@ class BlogServiceProvider extends XotBaseServiceProvider
         //dddx($xot->main_module);
         //$xot->update(['main_module'=>'Blog']);
         //$router->get('/', $xot->getHomeController());
-
     }
 
     public function registerCallback(): void
