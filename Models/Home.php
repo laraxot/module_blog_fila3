@@ -12,6 +12,8 @@ namespace Modules\Blog\Models;
 // use Sushi\Sushi;
 
 /**
+ * Modules\Blog\Models\Home
+ *
  * @property int|null                                                              $id
  * @property string|null                                                           $name
  * @property string|null                                                           $icon_src
@@ -21,7 +23,6 @@ namespace Modules\Blog\Models;
  * @property int|null                                                              $container_widgets_count
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Xot\Models\Widget[] $widgets
  * @property int|null                                                              $widgets_count
- *
  * @method static \Modules\Quaeris\Database\Factories\HomeFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Home      newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Home      newQuery()
@@ -32,7 +33,6 @@ namespace Modules\Blog\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|Home      whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Home      whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Home      whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Home extends BaseModel
