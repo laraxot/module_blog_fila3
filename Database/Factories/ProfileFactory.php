@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Blog\Models\Profile;
 
-class ProfileFactory extends Factory {
+class ProfileFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,11 +21,10 @@ class ProfileFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
-            'id' => $this->faker->randomNumber,
+            'id' => $this->faker->randomNumber(5),
             'post_type' => $this->faker->word,
             'bio' => $this->faker->text,
             'created_at' => $this->faker->dateTime,
@@ -39,8 +37,8 @@ class ProfileFactory extends Factory {
             'email' => $this->faker->email,
             'phone' => $this->faker->phoneNumber,
             'address' => $this->faker->address,
-            'user_id' => $this->faker->integer,
-            'last_name' => $this->faker->lastname
+            'user_id' => $this->faker->randomNumber(5),
+            'last_name' => $this->faker->lastname,
         ];
     }
 }
