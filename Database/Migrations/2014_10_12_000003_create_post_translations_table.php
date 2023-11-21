@@ -19,7 +19,7 @@ class CreatePostTranslationsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->id();
                 // $table->foreignId('blog_author_id')->nullable()->constrained()->cascadeOnDelete();
                 // $table->foreignId('blog_category_id')->nullable()->constrained()->nullOnDelete();

@@ -19,7 +19,7 @@ class CreatePostsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->id();
                 $table->foreignId('blog_author_id')->nullable()->constrained()->cascadeOnDelete();
                 $table->foreignId('blog_category_id')->nullable()->constrained()->nullOnDelete();
@@ -34,7 +34,7 @@ class CreatePostsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 // if (! $this->hasColumn('current_team_id')) {
                 //    $table->foreignId('current_team_id')->nullable();
                 // }

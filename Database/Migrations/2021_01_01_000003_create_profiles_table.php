@@ -19,7 +19,7 @@ class CreateProfilesTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->increments('id');
                 $table->integer('user_id')->nullable()->index();
                 $table->string('first_name')->nullable();
@@ -32,7 +32,7 @@ class CreateProfilesTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 /*
                 if ($this->hasColumn('auth_user_id')) {
                     $table->dropColumn('user_id');

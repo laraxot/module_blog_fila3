@@ -22,7 +22,7 @@ class CreateBlogTagsTable extends XotBaseMigration
     {
         // -- CREATE --
         $this->tableCreate(
-            static function (Blueprint $table) : void {
+            function (Blueprint $table) : void {
                 $table->id();
                 $table->timestamps();
             }
