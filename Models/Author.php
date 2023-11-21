@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,12 +15,12 @@ use Illuminate\Support\Facades\Storage;
 /**
  * Modules\Blog\Models\Author.
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property Collection<int, Post> $posts
  * @property int|null                                                                 $posts_count
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Author newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Author newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Author query()
+ * @method static Builder|Author newModelQuery()
+ * @method static Builder|Author newQuery()
+ * @method static Builder|Author query()
  *
  * @mixin \Eloquent
  */

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Support\Carbon;
 /**
  * Modules\Blog\Models\Tag.
  *
  * @property int                             $id
  * @property string                          $tag_type
  * @property int                             $tag_cat_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int                             $old_id
  * @property int                             $pos
  * @property int                             $tag_cat_id_up

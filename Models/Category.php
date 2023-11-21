@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Modules\Blog\Models\Category.
  *
- * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property Collection<int, Post> $posts
  * @property int|null                                                                 $posts_count
  *
  * @method static Builder|Category isInvisible()

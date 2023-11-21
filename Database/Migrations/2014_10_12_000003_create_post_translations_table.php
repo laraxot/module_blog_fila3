@@ -15,11 +15,11 @@ class CreatePostTranslationsTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 $table->id();
                 // $table->foreignId('blog_author_id')->nullable()->constrained()->cascadeOnDelete();
                 // $table->foreignId('blog_category_id')->nullable()->constrained()->nullOnDelete();
@@ -35,11 +35,12 @@ class CreatePostTranslationsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('title')) {
                     $table->string('title')->nullable();
                     $table->string('slug')->nullable()->change();
                 }
+
                 // if (! $this->hasColumn('profile_photo_path')) {
                 //    $table->string('profile_photo_path', 2048)->nullable();
                 // }

@@ -18,28 +18,30 @@ class CreateBlogTagsTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 $table->id();
-
                 $table->timestamps();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('name')) {
                     $table->string('name')->nullable();
                 }
+
                 if (! $this->hasColumn('slug')) {
                     $table->string('slug')->nullable();
                 }
+
                 if (! $this->hasColumn('type')) {
                     $table->string('type')->nullable();
                 }
+
                 if (! $this->hasColumn('order_column')) {
                     $table->integer('order_column')->nullable();
                 }

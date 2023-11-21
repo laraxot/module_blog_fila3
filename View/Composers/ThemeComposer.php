@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Blog\Models\Post;
 
 class ThemeComposer
@@ -11,7 +12,7 @@ class ThemeComposer
     /**
      * Undocumented function.
      *
-     * @return \Illuminate\Database\Eloquent\Collection<int,\Modules\Blog\Models\Post>
+     * @return Collection<int, Post>
      */
     public function getPosts()
     {

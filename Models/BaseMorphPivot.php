@@ -31,6 +31,7 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var array
      */
     protected $appends = [];
+
     /**
      * @var string
      */
@@ -45,6 +46,7 @@ abstract class BaseMorphPivot extends MorphPivot
      * @var bool
      */
     public $timestamps = true;
+
     // protected $attributes = ['related_type' => 'cuisine_cat'];
     /**
      * @var string[]
@@ -55,6 +57,7 @@ abstract class BaseMorphPivot extends MorphPivot
         'deleted_at',
         // 'published_at',
     ];
+
     /**
      * @var string[]
      */

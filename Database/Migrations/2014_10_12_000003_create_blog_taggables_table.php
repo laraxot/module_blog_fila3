@@ -18,13 +18,14 @@ class CreateBlogTaggablesTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 $table->id();
-                $table->foreignId('tag_id'); // ->constrained()->cascadeOnDelete();
+                $table->foreignId('tag_id');
+                // ->constrained()->cascadeOnDelete();
                 $table->morphs('taggable');
                 $table->unique(['tag_id', 'taggable_id', 'taggable_type']);
                 $table->timestamps();
@@ -32,13 +33,15 @@ class CreateBlogTaggablesTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('tag_id')) {
                     $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
                 }
+
                 if (! $this->hasColumn('taggable_id')) {
                     $table->morphs('taggable');
                 }
+
                 if (! $this->hasColumn('updated_by')) {
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();

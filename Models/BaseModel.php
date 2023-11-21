@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 // ---------- traits
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,16 +29,19 @@ abstract class BaseModel extends Model implements ModelContract
     use HasFactory;
 
     protected $connection = 'mysql';
+    
     /**
      * @var array<string, string>
      */
     protected $casts = [
         // 'published_at' => 'datetime:Y-m-d', // da verificare
     ];
+    
     /**
      * @var string[]
      */
     protected $dates = ['published_at', 'created_at', 'updated_at'];
+    
     /**
      * @var string
      */
@@ -47,6 +51,7 @@ abstract class BaseModel extends Model implements ModelContract
      * @var bool
      */
     public $incrementing = true;
+    
     /**
      * @var array<int, string>
      */
@@ -62,7 +67,7 @@ abstract class BaseModel extends Model implements ModelContract
     /**
      * Create a new factory instance for the model.
      *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     * @return Factory
      */
     protected static function newFactory()
     {

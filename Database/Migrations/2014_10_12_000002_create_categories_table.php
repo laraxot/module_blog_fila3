@@ -15,11 +15,11 @@ class CreateCategoriesTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 $table->id();
                 $table->string('name');
                 $table->string('slug')->unique();
@@ -32,7 +32,7 @@ class CreateCategoriesTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) {
+            static function (Blueprint $table) : void {
                 // if (! $this->hasColumn('current_team_id')) {
                 //    $table->foreignId('current_team_id')->nullable();
                 // }

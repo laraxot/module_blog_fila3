@@ -6,6 +6,8 @@ namespace Modules\Blog\Models;
 
 // use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 // use Astrotomic\Translatable\Translatable;
+use Illuminate\Support\Carbon;
+use Modules\Blog\Database\Factories\ProfileFactory;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -14,8 +16,8 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int                             $id
  * @property string|null                     $post_type
  * @property string|null                     $bio
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property string|null                     $deleted_by
@@ -27,7 +29,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property int|null                        $user_id
  * @property string|null                     $last_name
  *
- * @method static \Modules\Blog\Database\Factories\ProfileFactory factory($count = null, $state = [])
+ * @method static ProfileFactory factory($count = null, $state = [])
  * @method static Builder|Profile                                 newModelQuery()
  * @method static Builder|Profile                                 newQuery()
  * @method static Builder|Profile                                 query()

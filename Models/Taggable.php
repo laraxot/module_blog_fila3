@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Arr;
 
 /**
@@ -13,24 +15,24 @@ use Illuminate\Support\Arr;
  * @property string $taggable_type
  * @property int    $taggable_id
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable query()
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereTagId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereTaggableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereTaggableType($value)
+ * @method static Builder|Taggable newModelQuery()
+ * @method static Builder|Taggable newQuery()
+ * @method static Builder|Taggable query()
+ * @method static Builder|Taggable whereTagId($value)
+ * @method static Builder|Taggable whereTaggableId($value)
+ * @method static Builder|Taggable whereTaggableType($value)
  *
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property string|null                     $created_by
  * @property string|null                     $updated_by
  * @property array                           $custom_properties
  *
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereCustomProperties($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Taggable whereUpdatedBy($value)
+ * @method static Builder|Taggable whereCreatedAt($value)
+ * @method static Builder|Taggable whereCreatedBy($value)
+ * @method static Builder|Taggable whereCustomProperties($value)
+ * @method static Builder|Taggable whereUpdatedAt($value)
+ * @method static Builder|Taggable whereUpdatedBy($value)
  *
  * @mixin \Eloquent
  */

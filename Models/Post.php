@@ -6,6 +6,9 @@ namespace Modules\Blog\Models;
 
 // use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 // use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Collection;
+use Spatie\Tags\Tag;
+use ArrayAccess;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,9 +20,9 @@ use Spatie\Tags\HasTags;
 /**
  * Modules\Blog\Models\Post.
  *
- * @property \Modules\Blog\Models\Author|null                                $author
- * @property \Modules\Blog\Models\Category|null                              $category
- * @property \Illuminate\Database\Eloquent\Collection<int, \Spatie\Tags\Tag> $tags
+ * @property Author|null $author
+ * @property Category|null $category
+ * @property Collection<int, Tag> $tags
  * @property int|null                                                        $tags_count
  *
  * @method static Builder|Post draft()
@@ -27,11 +30,11 @@ use Spatie\Tags\HasTags;
  * @method static Builder|Post newQuery()
  * @method static Builder|Post published()
  * @method static Builder|Post query()
- * @method static Builder|Post withAllTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
+ * @method static Builder|Post withAllTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
  * @method static Builder|Post withAllTagsOfAnyType($tags)
- * @method static Builder|Post withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
+ * @method static Builder|Post withAnyTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
  * @method static Builder|Post withAnyTagsOfAnyType($tags)
- * @method static Builder|Post withoutTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
+ * @method static Builder|Post withoutTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
  *
  * @mixin \Eloquent
  */
@@ -101,6 +104,7 @@ class Post extends Model // implements TranslatableContract
     {
         return $this->translatedAttributes;
     }
+    
     /*
 
 
