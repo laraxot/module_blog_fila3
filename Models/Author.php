@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -9,13 +11,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Modules\Blog\Models\Author
+ * Modules\Blog\Models\Author.
  *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
- * @property-read int|null $posts_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property int|null                                                                 $posts_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Author newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Author newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Author query()
+ *
  * @mixin \Eloquent
  */
 class Author extends Model

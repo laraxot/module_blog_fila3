@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Http\Middleware;
 
 use Filament\Models\Contracts\FilamentUser;
@@ -22,18 +24,20 @@ class FilamentMiddleware extends Middleware
     private function getContextName(): string
     {
         $module = $this->getModule();
-        if (!static::$context) {
-            throw new \Exception("Context has to be defined in your class");
+        if (! static::$context) {
+            throw new \Exception('Context has to be defined in your class');
         }
+
         return \Str::of($module->getLowerName())->append('-')->append(\Str::slug(static::$context))->kebab()->toString();
     }
+
     protected function authenticate($request, array $guards): void
     {
         $context = $this->getContextName();
         $guardName = config("$context.auth.guard");
         $guard = $this->auth->guard($guardName);
 
-        if (!$guard->check()) {
+        if (! $guard->check()) {
             $this->unauthenticated($request, $guards);
 
             return;
@@ -44,17 +48,18 @@ class FilamentMiddleware extends Middleware
         $user = $guard->user();
 
         if ($user instanceof FilamentUser) {
-            abort_if(!$user->canAccessFilament(), 403);
+            abort_if(! $user->canAccessFilament(), 403);
 
             return;
         }
 
-        abort_if(config('app.env') !== 'local', 403);
+        abort_if('local' !== config('app.env'), 403);
     }
 
     protected function redirectTo($request): string
     {
         $context = $this->getContextName();
+
         return route("$context.auth.login");
     }
 }

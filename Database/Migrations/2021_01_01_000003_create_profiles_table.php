@@ -33,9 +33,6 @@ class CreateProfilesTable extends XotBaseMigration
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table) {
-
-
-
                 /*
                 if ($this->hasColumn('auth_user_id')) {
                     $table->dropColumn('user_id');

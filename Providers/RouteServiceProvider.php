@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale;
 use Illuminate\Routing\Router;
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
-use BezhanSalleh\FilamentLanguageSwitch\Http\Middleware\SwitchLanguageLocale;
 
 class RouteServiceProvider extends XotBaseRouteServiceProvider
 {
@@ -23,23 +23,23 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     {
         // 36     Cannot access offset 'router' on Illuminate\Contracts\Foundation\Application
         // $router = $this->app['router'];
-        //$router = app('router');
+        // $router = app('router');
         // dddx([$router, $router1]);
 
         // $this->registerLang();
-        //$this->registerRoutePattern($router);
-        //$this->registerMyMiddleware($router);
+        // $this->registerRoutePattern($router);
+        // $this->registerMyMiddleware($router);
     }
 
     public function registerCallback(): void
     {
-        //dddx('b');
+        // dddx('b');
     }
 
-    //public function registerMyMiddleware(Router $router): void
-    //{
+    // public function registerMyMiddleware(Router $router): void
+    // {
     // $router->pushMiddlewareToGroup('web', SetDefaultLocaleForUrlsMiddleware::class);
-    //$router->appendMiddlewareToGroup('web', SwitchLanguageLocale::class);
-    //$router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
-    //}
+    // $router->appendMiddlewareToGroup('web', SwitchLanguageLocale::class);
+    // $router->appendMiddlewareToGroup('api', SwitchLanguageLocale::class);
+    // }
 }

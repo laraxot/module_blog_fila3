@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Builder;
@@ -8,15 +10,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * Modules\Blog\Models\Category
+ * Modules\Blog\Models\Category.
  *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
- * @property-read int|null $posts_count
+ * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property int|null                                                                 $posts_count
+ *
  * @method static Builder|Category isInvisible()
  * @method static Builder|Category isVisible()
  * @method static Builder|Category newModelQuery()
  * @method static Builder|Category newQuery()
  * @method static Builder|Category query()
+ *
  * @mixin \Eloquent
  */
 class Category extends Model

@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Storage;
 use Spatie\Tags\HasTags;
 
 /**
- * Modules\Blog\Models\Post
+ * Modules\Blog\Models\Post.
  *
- * @property-read \Modules\Blog\Models\Author|null $author
- * @property-read \Modules\Blog\Models\Category|null $category
+ * @property \Modules\Blog\Models\Author|null                                $author
+ * @property \Modules\Blog\Models\Category|null                              $category
  * @property \Illuminate\Database\Eloquent\Collection<int, \Spatie\Tags\Tag> $tags
- * @property-read int|null $tags_count
+ * @property int|null                                                        $tags_count
+ *
  * @method static Builder|Post draft()
  * @method static Builder|Post newModelQuery()
  * @method static Builder|Post newQuery()
@@ -31,11 +32,11 @@ use Spatie\Tags\HasTags;
  * @method static Builder|Post withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
  * @method static Builder|Post withAnyTagsOfAnyType($tags)
  * @method static Builder|Post withoutTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
+ *
  * @mixin \Eloquent
  */
 class Post extends Model // implements TranslatableContract
-{
-    use HasFactory;
+{use HasFactory;
     use HasTags;
 
     // use Translatable;
@@ -117,14 +118,14 @@ class Post extends Model // implements TranslatableContract
         $res = $this->translateOrNew($locale);
         $res->post_id = $this->getKey();
         $res->save();
-        return $this;
-        //return $this->translate($locale);
-    }
 
+        return $this;
+        // return $this->translate($locale);
+    }
 
     public function bannerUrl(): Attribute
     {
-        return Attribute::get(fn() => asset(Storage::url($this->banner)));
+        return Attribute::get(fn () => asset(Storage::url($this->banner)));
     }
 
     public function scopePublished(Builder $query): Builder
