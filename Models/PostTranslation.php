@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|PostTranslation newModelQuery()
  * @method static Builder|PostTranslation newQuery()
  * @method static Builder|PostTranslation query()
- *
  * @mixin \Eloquent
  */
 class PostTranslation extends Model

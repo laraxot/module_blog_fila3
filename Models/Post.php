@@ -20,22 +20,20 @@ use Spatie\Tags\HasTags;
 /**
  * Modules\Blog\Models\Post.
  *
- * @property Author|null $author
- * @property Category|null $category
+ * @property-read \Modules\Blog\Models\Author|null $author
+ * @property-read \Modules\Blog\Models\Category|null $category
  * @property Collection<int, Tag> $tags
- * @property int|null                                                        $tags_count
- *
+ * @property-read int|null $tags_count
  * @method static Builder|Post draft()
  * @method static Builder|Post newModelQuery()
  * @method static Builder|Post newQuery()
  * @method static Builder|Post published()
  * @method static Builder|Post query()
- * @method static Builder|Post withAllTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
+ * @method static Builder|Post withAllTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
  * @method static Builder|Post withAllTagsOfAnyType($tags)
- * @method static Builder|Post withAnyTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
+ * @method static Builder|Post withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
  * @method static Builder|Post withAnyTagsOfAnyType($tags)
- * @method static Builder|Post withoutTags((ArrayAccess | Tag | array | string) $tags, ?string $type = null)
- *
+ * @method static Builder|Post withoutTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
  * @mixin \Eloquent
  */
 class Post extends Model // implements TranslatableContract

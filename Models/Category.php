@@ -13,15 +13,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * Modules\Blog\Models\Category.
  *
- * @property Collection<int, Post> $posts
- * @property int|null                                                                 $posts_count
- *
+ * @property-read Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property-read int|null $posts_count
  * @method static Builder|Category isInvisible()
  * @method static Builder|Category isVisible()
  * @method static Builder|Category newModelQuery()
  * @method static Builder|Category newQuery()
  * @method static Builder|Category query()
- *
  * @mixin \Eloquent
  */
 class Category extends Model

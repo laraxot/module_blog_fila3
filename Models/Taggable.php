@@ -11,29 +11,25 @@ use Illuminate\Support\Arr;
 /**
  * Modules\Tag\Models\Taggable.
  *
- * @property int    $tag_id
+ * @property int $tag_id
  * @property string $taggable_type
- * @property int    $taggable_id
- *
+ * @property int $taggable_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property string|null $created_by
+ * @property string|null $updated_by
+ * @property array $custom_properties
  * @method static Builder|Taggable newModelQuery()
  * @method static Builder|Taggable newQuery()
  * @method static Builder|Taggable query()
- * @method static Builder|Taggable whereTagId($value)
- * @method static Builder|Taggable whereTaggableId($value)
- * @method static Builder|Taggable whereTaggableType($value)
- *
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
- * @property string|null                     $created_by
- * @property string|null                     $updated_by
- * @property array                           $custom_properties
- *
  * @method static Builder|Taggable whereCreatedAt($value)
  * @method static Builder|Taggable whereCreatedBy($value)
  * @method static Builder|Taggable whereCustomProperties($value)
+ * @method static Builder|Taggable whereTagId($value)
+ * @method static Builder|Taggable whereTaggableId($value)
+ * @method static Builder|Taggable whereTaggableType($value)
  * @method static Builder|Taggable whereUpdatedAt($value)
  * @method static Builder|Taggable whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Taggable extends BaseMorphPivot

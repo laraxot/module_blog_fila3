@@ -15,27 +15,10 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * Modules\Blog\Models\Home.
  *
- * @property int|null                                                              $id
- * @property string|null                                                           $name
- * @property string|null                                                           $icon_src
- * @property string|null                                                           $created_by
- * @property string|null                                                           $updated_by
- * @property Collection|\Modules\Xot\Models\Widget[] $containerWidgets
- * @property int|null                                                              $container_widgets_count
- * @property Collection|\Modules\Xot\Models\Widget[] $widgets
- * @property int|null                                                              $widgets_count
- *
- * @method static \Modules\Quaeris\Database\Factories\HomeFactory factory(...$parameters)
+ * @method static \Modules\Blog\Database\Factories\HomeFactory factory($count = null, $state = [])
  * @method static Builder|Home newModelQuery()
  * @method static Builder|Home newQuery()
- * @method static Builder|Home ofLayoutPosition($layout_position)
  * @method static Builder|Home query()
- * @method static Builder|Home whereCreatedBy($value)
- * @method static Builder|Home whereIconSrc($value)
- * @method static Builder|Home whereId($value)
- * @method static Builder|Home whereName($value)
- * @method static Builder|Home whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Home extends BaseModel
