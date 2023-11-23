@@ -13,7 +13,7 @@ class PostOverview extends Widget
 
     protected int | string | array $columnSpan = 3;
 
-    protected static string $view = 'filament.resources.post-resource.widgets.post-overview';
+    protected static string $view = 'blog::filament.resources.post-resource.widgets.post-overview';
 
     protected function getViewData(): array
     {

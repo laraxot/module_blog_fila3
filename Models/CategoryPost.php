@@ -34,5 +34,5 @@ class CategoryPost extends EloquentModel
      */
     protected $connection = 'blog';
 
-    protected $table = 'category_posts';
+    protected $table = 'category_post';
 }

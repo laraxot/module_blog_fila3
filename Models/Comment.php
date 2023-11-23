@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  * @property int|null $parent_id
  * @property-read Comment|null $parentComment
  * @property-read \Modules\Blog\Models\Post|null $post
+ * @property-read User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
