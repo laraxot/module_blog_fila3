@@ -2,14 +2,15 @@
 
 namespace Modules\Blog\Models;
 
-use Barryvdh\LaravelIdeHelper\Eloquent;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
+use Modules\User\Models\User;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Modules\Blog\Models\Post
@@ -71,12 +72,12 @@ class Post extends EloquentModel
         return $this->belongsToMany(Category::class);
     }
 
-    public function shortBody($words = 30): string
+    public function shortBody(int $words = 30): string
     {
         return Str::words(strip_tags((string) $this->body), $words);
     }
 
-    public function getFormattedDate()
+    public function getFormattedDate(): string
     {
         return $this->published_at->format('F jS Y');
     }

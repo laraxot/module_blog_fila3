@@ -2,9 +2,10 @@
 
 namespace Modules\Blog\Models;
 
+use Webmozart\Assert\Assert;
+use Illuminate\Support\Facades\Cache;
 use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Facades\Cache;
 
 /**
  * Modules\Blog\Models\TextWidget
@@ -47,7 +48,7 @@ class TextWidget extends EloquentModel
         'active',
     ];
 
-    public static function getTitle(string $key): string
+    public static function getTitle(string $key): ?string
     {
         $widget = TextWidget::query()->where('key', $key)->first();
 
@@ -58,14 +59,14 @@ class TextWidget extends EloquentModel
         return $widget->title;
     }
 
-    public static function getContent(string $key): string
+    public static function getContent(string $key): ?string
     {
         $widget = Cache::get('text-widget-' . $key, fn () => TextWidget::query()->where('key', $key)->first());
 
         if (! $widget) {
             return '';
         }
-
+        Assert::isInstanceOf($widget, TextWidget::class);
         return $widget->content;
     }
 }

@@ -9,7 +9,7 @@ use Filament\Widgets\Widget;
 
 class PostOverview extends Widget
 {
-    public ?Post $record = null;
+    public Post $record;
 
     protected int | string | array $columnSpan = 3;
 
