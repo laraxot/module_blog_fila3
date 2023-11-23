@@ -10,16 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * @property int                                                             $id
- * @property string                                                          $title
- * @property string                                                          $slug
- * @property \Illuminate\Support\Carbon|null                                 $created_at
- * @property \Illuminate\Support\Carbon|null                                 $updated_at
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
- * @property int|null                                                        $posts_count
- * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $publishedPosts
- * @property int|null                                                        $published_posts_count
+ * Modules\Blog\Models\Category
  *
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property-read int|null $posts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
@@ -28,12 +27,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
- *
- * @mixin Eloquent
+ * @mixin \Eloquent
  */
 class Category extends EloquentModel
 {
     use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $connection = 'blog';
 
     protected $fillable = ['title', 'slug'];
 

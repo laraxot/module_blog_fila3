@@ -21,12 +21,8 @@ class CreateCategoriesTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table) : void {
                 $table->id();
-                $table->string('name');
-                $table->string('slug')->unique();
-                $table->longText('description')->nullable();
-                $table->boolean('is_visible')->default(false);
-                $table->string('seo_title', 60)->nullable();
-                $table->string('seo_description', 160)->nullable();
+                $table->string('title', 2048);
+                $table->string('slug', 2048);
                 $table->timestamps();
             }
         );

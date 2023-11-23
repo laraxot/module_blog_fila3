@@ -29,5 +29,10 @@ class UpvoteDownvote extends EloquentModel
 {
     use HasFactory;
 
+    /**
+     * @var string
+     */
+    protected $connection = 'blog';
+
     protected $fillable = ['is_upvote', 'post_id', 'user_id'];
 }

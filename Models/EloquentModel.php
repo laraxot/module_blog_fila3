@@ -31,4 +31,8 @@ use Illuminate\Database\Query\Builder;
  */
 class EloquentModel extends Model
 {
+    /**
+     * @var string
+     */
+    protected $connection = 'blog';
 }

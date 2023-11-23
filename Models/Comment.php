@@ -43,6 +43,11 @@ class Comment extends EloquentModel
 {
     use HasFactory;
 
+    /**
+     * @var string
+     */
+    protected $connection = 'blog';
+
     protected $fillable = [
         'comment',
         'post_id',

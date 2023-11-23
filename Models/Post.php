@@ -51,6 +51,11 @@ use Illuminate\Support\Str;
 class Post extends EloquentModel
 {
     use HasFactory;
+    
+    /**
+     * @var string
+     */
+    protected $connection = 'blog';
 
     protected $fillable = ['title', 'slug', 'thumbnail', 'body', 'user_id', 'active', 'published_at', 'meta_title', 'meta_description'];
 
