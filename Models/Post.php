@@ -1,152 +1,102 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Modules\Blog\Models;
 
-// use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-// use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Collection;
-use Spatie\Tags\Tag;
-use ArrayAccess;
-use Illuminate\Database\Eloquent\Builder;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
-use Spatie\Tags\HasTags;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 /**
- * Modules\Blog\Models\Post.
+ * @property string                          $title
+ * @property string                          $slug
+ * @property string|null                     $thumbnail
+ * @property string                          $body
+ * @property bool                            $active
+ * @property Carbon                          $published_at
+ * @property int                             $id
+ * @property int                             $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null                     $meta_title
+ * @property string|null                     $meta_description
+ * @property-read Collection<int, Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read string $human_read_time
+ * @property-read User $user
  *
- * @property-read \Modules\Blog\Models\Author|null $author
- * @property-read \Modules\Blog\Models\Category|null $category
- * @property Collection<int, Tag> $tags
- * @property-read int|null $tags_count
- * @method static Builder|Post draft()
- * @method static Builder|Post newModelQuery()
- * @method static Builder|Post newQuery()
- * @method static Builder|Post published()
- * @method static Builder|Post query()
- * @method static Builder|Post withAllTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
- * @method static Builder|Post withAllTagsOfAnyType($tags)
- * @method static Builder|Post withAnyTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
- * @method static Builder|Post withAnyTagsOfAnyType($tags)
- * @method static Builder|Post withoutTags(\ArrayAccess|\Spatie\Tags\Tag|array|string $tags, ?string $type = null)
- * @mixin \Eloquent
+ * @method static \Database\Factories\PostFactory            factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereMetaTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
+ *
+ * @mixin Eloquent
  */
-class Post extends Model // implements TranslatableContract
-{use HasFactory;
-    use HasTags;
+class Post extends EloquentModel
+{
+    use HasFactory;
 
-    // use Translatable;
+    protected $fillable = ['title', 'slug', 'thumbnail', 'body', 'user_id', 'active', 'published_at', 'meta_title', 'meta_description'];
 
-    /**
-     * @var string
-     */
-    protected $table = 'blog_posts';
-
-    /**
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'title',
-        'slug',
-        'excerpt',
-        'banner',
-        'content',
-        'published_at',
-    ];
-
-    /**
-     * @var array<string, string>
-     */
     protected $casts = [
-        'published_at' => 'date',
+        'published_at' => 'datetime',
     ];
 
-    /**
-     * @var array<string>
-     */
-    protected $appends = [
-        'banner_url',
-    ];
-
-    /**
-     * @var array<string>
-     */
-    public $translatedAttributes = ['title', 'excerpt', 'content'];
-
-    // public function getTranslations(): array
-    // {
-    //     //return $this->{$field};
-    //     $res = $this->getTranslationsArray();
-
-    //     return $res;
-    //     //return ['it'=>'titleit','en'=>'titleen'];
-    // }
-
-    /*errore di contratto --
-    public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): mixed{
-        return 'ciao';
-    }
-    */
-
-    /**
-     * @return string[]
-     *
-     * @psalm-return array<string>
-     */
-    public function getTranslatableAttributes()
+    public function user(): BelongsTo
     {
-        return $this->translatedAttributes;
-    }
-    
-    /*
-
-
-    public function setTranslation($field, $locale, $value)
-    {
-        //dddx([$a,$b,$c]);
-        $this->translateOrNew($locale)->{$field}=$value;
-        //$this->{$field}=$value;
-    }
-    */
-
-    public function setLocale($locale): static
-    {
-        app()->setLocale($locale);
-        $res = $this->translateOrNew($locale);
-        $res->post_id = $this->getKey();
-        $res->save();
-
-        return $this;
-        // return $this->translate($locale);
+        return $this->belongsTo(User::class);
     }
 
-    public function bannerUrl(): Attribute
+    public function categories(): BelongsToMany
     {
-        return Attribute::get(fn () => asset(Storage::url($this->banner)));
+        return $this->belongsToMany(Category::class);
     }
 
-    public function scopePublished(Builder $query): Builder
+    public function shortBody($words = 30): string
     {
-        return $query->whereNotNull('published_at');
+        return Str::words(strip_tags((string) $this->body), $words);
     }
 
-    public function scopeDraft(Builder $query): Builder
+    public function getFormattedDate()
     {
-        return $query->whereNull('published_at');
+        return $this->published_at->format('F jS Y');
     }
 
-    public function author(): BelongsTo
+    public function getThumbnail()
     {
-        return $this->belongsTo(Author::class, 'blog_author_id');
+        if (str_starts_with((string) $this->thumbnail, 'http')) {
+            return $this->thumbnail;
+        }
+
+        return '/storage/' . $this->thumbnail;
     }
 
-    public function category(): BelongsTo
+    public function humanReadTime(): Attribute
     {
-        return $this->belongsTo(Category::class, 'blog_category_id');
+        return new Attribute(
+            get: function ($value, $attributes): string {
+                $words   = Str::wordCount(strip_tags((string) $attributes['body']));
+                $minutes = ceil($words / 200);
+
+                return $minutes . ' ' . str('min')->plural($minutes) . ', '
+                    . $words . ' ' . str('word')->plural($words);
+            }
+        );
     }
 }

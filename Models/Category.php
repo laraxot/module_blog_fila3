@@ -1,65 +1,50 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Modules\Blog\Models;
 
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Builder;
+use Barryvdh\LaravelIdeHelper\Eloquent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Modules\Blog\Models\Category.
- *
- * @property-read Collection<int, \Modules\Blog\Models\Post> $posts
+ * @property int                             $id
+ * @property string                          $title
+ * @property string                          $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $posts
  * @property-read int|null $posts_count
- * @method static Builder|Category isInvisible()
- * @method static Builder|Category isVisible()
- * @method static Builder|Category newModelQuery()
- * @method static Builder|Category newQuery()
- * @method static Builder|Category query()
- * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Post> $publishedPosts
+ * @property-read int|null $published_posts_count
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ *
+ * @mixin Eloquent
  */
-class Category extends Model
+class Category extends EloquentModel
 {
     use HasFactory;
 
-    /**
-     * @var string
-     */
-    protected $table = 'blog_categories';
+    protected $fillable = ['title', 'slug'];
 
-    /**
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'slug',
-        'description',
-        'is_visible',
-    ];
-
-    /**
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'is_visible' => 'boolean',
-    ];
-
-    public function posts(): HasMany
+    public function posts(): BelongsToMany
     {
-        return $this->hasMany(Post::class, 'blog_category_id', 'id');
+        return $this->belongsToMany(Post::class);
     }
 
-    public function scopeIsVisible(Builder $query): Builder
+    public function publishedPosts(): BelongsToMany
     {
-        return $query->whereIsVisible(true);
-    }
-
-    public function scopeIsInvisible(Builder $query): Builder
-    {
-        return $query->whereIsVisible(false);
+        return $this->belongsToMany(Post::class, function ($query) {
+            $query->where('active', '=', 1)
+                ->whereDate('published_at', '<', Carbon::now());
+        });
     }
 }
