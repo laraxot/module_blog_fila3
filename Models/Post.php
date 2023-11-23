@@ -12,24 +12,23 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
 /**
- * @property string                          $title
- * @property string                          $slug
- * @property string|null                     $thumbnail
- * @property string                          $body
- * @property bool                            $active
- * @property Carbon                          $published_at
- * @property int                             $id
- * @property int                             $user_id
+ * Modules\Blog\Models\Post
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property string|null $thumbnail
+ * @property string $body
+ * @property int $active
+ * @property \Illuminate\Support\Carbon|null $published_at
+ * @property string $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null                     $meta_title
- * @property string|null                     $meta_description
- * @property-read Collection<int, Category> $categories
+ * @property string|null $meta_title
+ * @property string|null $meta_description
+ * @property-read Collection<int, \Modules\Blog\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read string $human_read_time
- * @property-read User $user
- *
- * @method static \Database\Factories\PostFactory            factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post query()
@@ -45,8 +44,7 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
- *
- * @mixin Eloquent
+ * @mixin \Eloquent
  */
 class Post extends EloquentModel
 {

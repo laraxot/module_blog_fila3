@@ -13,19 +13,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * App\Models\Comment.
  *
- * @property int                              $id
- * @property string                           $comment
- * @property int                              $post_id
- * @property int                              $user_id
- * @property \Illuminate\Support\Carbon|null  $created_at
- * @property \Illuminate\Support\Carbon|null  $updated_at
- * @property int|null                         $parent_id
- * @property EloquentCollection<int, Comment> $comments
- * @property int|null                         $comments_count
- * @property Comment|null                     $parentComment
- * @property Post                             $post
- * @property User                             $user
- *
+ * @property int $id
+ * @property string $comment
+ * @property int $post_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $parent_id
+ * @property-read Comment|null $parentComment
+ * @property-read \Modules\Blog\Models\Post|null $post
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
@@ -36,8 +32,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Comment wherePostId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
- *
- * @mixin Eloquent
+ * @mixin \Eloquent
  */
 class Comment extends EloquentModel
 {
