@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources;
 
-use Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
-use Modules\Blog\Models\TextWidget;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
+use Modules\Blog\Models\TextWidget;
 
 class TextWidgetResource extends Resource
 {
@@ -45,7 +47,6 @@ class TextWidgetResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -60,17 +61,16 @@ class TextWidgetResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListTextWidgets::route('/'),
+            'index' => Pages\ListTextWidgets::route('/'),
             'create' => Pages\CreateTextWidget::route('/create'),
-            'view'   => Pages\ViewTextWidget::route('/{record}'),
-            'edit'   => Pages\EditTextWidget::route('/{record}/edit'),
+            'view' => Pages\ViewTextWidget::route('/{record}'),
+            'edit' => Pages\EditTextWidget::route('/{record}/edit'),
         ];
     }
 }

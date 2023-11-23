@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources;
 
-use Modules\Blog\Filament\Resources\UserResource\Pages;
-use Modules\Blog\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Modules\Blog\Filament\Resources\UserResource\Pages;
+use Modules\Blog\Models\User;
 
 class UserResource extends Resource
 {
@@ -59,7 +61,6 @@ class UserResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -73,17 +74,16 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListUsers::route('/'),
+            'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'view'   => Pages\ViewUser::route('/{record}'),
-            'edit'   => Pages\EditUser::route('/{record}/edit'),
+            'view' => Pages\ViewUser::route('/{record}'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
@@ -31,5 +31,4 @@ use Illuminate\Database\Query\Builder;
  */
 class EloquentModel extends Model
 {
-    //
 }
