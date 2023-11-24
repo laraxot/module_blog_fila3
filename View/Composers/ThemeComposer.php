@@ -23,6 +23,9 @@ class ThemeComposer
         return Post::get();
     }
 
+    /**
+     * @return Post|null
+     */
     public function latestPost(){
          // Latest post
      $latestPost = Post::where('active', '=', 1)
@@ -30,12 +33,17 @@ class ThemeComposer
      ->orderBy('published_at', 'desc')
      ->limit(1)
      ->first();
+
      return $latestPost;
     }
 
 
 
- // Show the most popular 3 posts based on upvotes
+/**
+ * Show the most popular 3 posts based on upvotes
+ *
+ * @return Collection<int, Post>
+ */
  public function popularPosts(){
  $popularPosts = Post::query()
      ->leftJoin('upvote_downvotes', 'posts.id', '=', 'upvote_downvotes.post_id')
@@ -66,7 +74,9 @@ class ThemeComposer
      return $popularPosts;
  }
 
-
+/**
+ * @return Collection<int, Post>
+ */
  public function recommendedPosts(){
  $user = auth()->user();
 
@@ -114,7 +124,11 @@ class ThemeComposer
     }
 
 
-    // Show recent categories with their latest posts
+    /**
+     * Show recent categories with their latest posts
+     *
+     * @return Collection<int, Category>
+     */
     public function categories(){
     $categories = Category::query()
     //            ->with(['posts' => function ($query) {

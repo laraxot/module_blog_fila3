@@ -47,9 +47,12 @@ class Category extends EloquentModel
 
     public function publishedPosts(): BelongsToMany
     {
-        return $this->belongsToMany(Post::class, function ($query) {
-            $query->where('active', '=', 1)
+        // return $this->belongsToMany(Post::class, function ($query) {
+        //     $query->where('active', '=', 1)
+        //         ->whereDate('published_at', '<', Carbon::now());
+        // });
+        return $this->posts()
+                ->where('active', '=', 1)
                 ->whereDate('published_at', '<', Carbon::now());
-        });
     }
 }
