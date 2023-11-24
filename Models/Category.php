@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $posts
  * @property-read int|null $posts_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $publishedPosts
+ * @property-read int|null $published_posts_count
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
