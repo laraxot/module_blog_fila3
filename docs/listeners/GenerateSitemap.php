@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Blog\Listeners;
+namespace App\Listeners;
 
 use Illuminate\Support\Str;
 use samdark\sitemap\Sitemap;
