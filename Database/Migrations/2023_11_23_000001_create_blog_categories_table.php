@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
+use Modules\Blog\Models\Category;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateLiveuserUsersTable.
  */
-class CreateCategoriesTable extends XotBaseMigration
+class CreateBlogCategoriesTable extends XotBaseMigration
 {
+    protected ?string $model_class = Category::class;
     /**
      * Run the migrations.
      *
