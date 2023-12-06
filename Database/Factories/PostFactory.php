@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Blog\Models\Post;
 
-class PostFactory extends Factory {
+class PostFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,9 +21,8 @@ class PostFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
             'title' => $this->faker->sentence,
             'slug' => $this->faker->slug,
@@ -34,7 +32,7 @@ class PostFactory extends Factory {
             'active' => $this->faker->boolean,
             'published_at' => $this->faker->dateTime,
             'meta_title' => $this->faker->word,
-            'meta_description' => $this->faker->word
+            'meta_description' => $this->faker->word,
         ];
     }
 }

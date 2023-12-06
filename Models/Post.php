@@ -33,22 +33,24 @@ use Webmozart\Assert\Assert;
  * @property int|null                                       $categories_count
  * @property string                                         $human_read_time
  * @property User|null                                      $user
- * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Post query()
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereMetaDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereMetaTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereThumbnail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereMetaTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post   whereUserId($value)
  * @method static \Modules\Blog\Database\Factories\PostFactory factory($count = null, $state = [])
+ *
  * @mixin \Eloquent
  */
 class Post extends EloquentModel implements HasMedia

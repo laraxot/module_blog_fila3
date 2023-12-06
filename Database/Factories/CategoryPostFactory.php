@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Blog\Models\CategoryPost;
 
-class CategoryPostFactory extends Factory {
+class CategoryPostFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,11 +21,9 @@ class CategoryPostFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
-            
         ];
     }
 }

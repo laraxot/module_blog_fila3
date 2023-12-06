@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Blog\Models\TextWidget;
 
-class TextWidgetFactory extends Factory {
+class TextWidgetFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,15 +21,14 @@ class TextWidgetFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
             'key' => $this->faker->word,
             'image' => $this->faker->image,
             'title' => $this->faker->sentence,
             'content' => $this->faker->text,
-            'active' => $this->faker->boolean
+            'active' => $this->faker->boolean,
         ];
     }
 }

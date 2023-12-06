@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace Modules\Blog\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-
 use Modules\Blog\Models\Comment;
 
-class CommentFactory extends Factory {
+class CommentFactory extends Factory
+{
     /**
      * The name of the factory's corresponding model.
      *
@@ -22,14 +21,13 @@ class CommentFactory extends Factory {
      *
      * @return array
      */
-    public function definition() {
-
-
+    public function definition()
+    {
         return [
             'comment' => $this->faker->text,
             'post_id' => $this->faker->integer,
             'user_id' => $this->faker->integer,
-            'parent_id' => $this->faker->integer
+            'parent_id' => $this->faker->integer,
         ];
     }
 }
