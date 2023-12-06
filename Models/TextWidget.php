@@ -20,7 +20,6 @@ use Webmozart\Assert\Assert;
  * @property int                             $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget query()
@@ -32,7 +31,7 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereUpdatedAt($value)
- *
+ * @method static \Modules\Blog\Database\Factories\TextWidgetFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class TextWidget extends EloquentModel implements HasMedia
