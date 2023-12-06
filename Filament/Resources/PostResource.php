@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Modules\Blog\Models\Post;
-use Filament\Resources\Resource;
 use Modules\Blog\Filament\Resources\PostResource\Pages;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Modules\Blog\Models\Post;
 
 class PostResource extends Resource
 {

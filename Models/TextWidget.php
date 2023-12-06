@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Webmozart\Assert\Assert;
-use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\Cache;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Webmozart\Assert\Assert;
 
 /**
  * Modules\Blog\Models\TextWidget.
@@ -38,7 +38,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class TextWidget extends EloquentModel implements HasMedia
 {
     use InteractsWithMedia;
-    
+
     protected $fillable = [
         'key',
         'image',

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Modules\Blog\Models\TextWidget;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
+use Modules\Blog\Models\TextWidget;
 
 class TextWidgetResource extends Resource
 {
