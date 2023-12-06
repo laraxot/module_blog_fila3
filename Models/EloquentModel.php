@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Modules\Blog\Models\EloquentModel.
@@ -16,10 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
-class EloquentModel extends Model
+class EloquentModel extends BaseModel
 {
-    /**
-     * @var string
-     */
-    protected $connection = 'blog';
+
 }

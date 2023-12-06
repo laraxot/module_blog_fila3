@@ -34,13 +34,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Category extends EloquentModel
 {
-    use HasFactory;
-
-    /**
-     * @var string
-     */
-    protected $connection = 'blog';
-
     protected $fillable = ['title', 'slug'];
 
     public function posts(): BelongsToMany

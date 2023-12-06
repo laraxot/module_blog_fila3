@@ -36,13 +36,6 @@ use Webmozart\Assert\Assert;
  */
 class TextWidget extends EloquentModel
 {
-    use HasFactory;
-
-    /**
-     * @var string
-     */
-    protected $connection = 'blog';
-
     protected $fillable = [
         'key',
         'image',

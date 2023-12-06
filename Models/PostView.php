@@ -33,13 +33,6 @@ use Illuminate\Support\Carbon;
  */
 class PostView extends EloquentModel
 {
-    use HasFactory;
-
-    /**
-     * @var string
-     */
-    protected $connection = 'blog';
-
     protected $fillable = [
         'ip_address',
         'user_agent',

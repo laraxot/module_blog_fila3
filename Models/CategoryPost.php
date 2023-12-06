@@ -28,12 +28,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class CategoryPost extends EloquentModel
 {
-    use HasFactory;
 
-    /**
-     * @var string
-     */
-    protected $connection = 'blog';
-
-    protected $table = 'category_post';
 }
