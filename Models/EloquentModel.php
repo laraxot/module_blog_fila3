@@ -17,5 +17,4 @@ use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
  */
 class EloquentModel extends BaseModel
 {
-
 }

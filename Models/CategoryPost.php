@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 /**
  * Modules\Blog\Models\CategoryPost.
  *
@@ -28,5 +26,4 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class CategoryPost extends EloquentModel
 {
-
 }
