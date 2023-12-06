@@ -69,8 +69,12 @@ class Comment extends EloquentModel
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, function ($query) {
-            $query->whereNotNull('parent_id')->orderBy('created_at', 'desc');
-        });
+        // return $this->hasMany(Comment::class, function ($query) {
+        //     $query->whereNotNull('parent_id')->orderBy('created_at', 'desc');
+        // });
+
+        return $this->hasMany(Comment::class)
+            ->whereNotNull('parent_id')
+            ->orderBy('created_at', 'desc');
     }
 }
