@@ -33,6 +33,7 @@ use Webmozart\Assert\Assert;
  * @property int|null                                       $categories_count
  * @property string                                         $human_read_time
  * @property User|null                                      $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Post   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post   newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Post   query()
@@ -49,12 +50,15 @@ use Webmozart\Assert\Assert;
  * @method static \Illuminate\Database\Eloquent\Builder|Post   whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post   whereUserId($value)
  * @method static \Modules\Blog\Database\Factories\PostFactory factory($count = null, $state = [])
+ *
  * @property string|null                                                                                                $updated_by
  * @property string|null                                                                                                $created_by
  * @property \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Modules\Media\Models\Media> $media
  * @property int|null                                                                                                   $media_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedBy($value)
+ *
  * @mixin \Eloquent
  */
 class Post extends EloquentModel implements HasMedia
