@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Modules\Blog\Filament\Resources\PostResource\Pages;
 use Modules\Blog\Models\Post;
+use Filament\Resources\Resource;
+use Modules\Blog\Filament\Resources\PostResource\Pages;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class PostResource extends Resource
 {
@@ -50,7 +52,19 @@ class PostResource extends Resource
 
                 Forms\Components\Card::make()
                     ->schema([
-                        Forms\Components\FileUpload::make('thumbnail'),
+                        // Forms\Components\FileUpload::make('thumbnail'),
+                        SpatieMediaLibraryFileUpload::make('thumbnail')
+                            // ->image()
+                            // ->maxSize(5000)
+                            // ->multiple()
+                            // ->enableReordering()
+                            ->enableOpen()
+                            ->enableDownload()
+                            ->columnSpanFull()
+                            // ->collection('avatars')
+                            // ->conversion('thumbnail')
+                            ->disk('uploads')
+                            ->directory('photos'),
                         Forms\Components\Select::make('categories')
                             ->multiple()
                             ->relationship('categories', 'title'),
@@ -62,7 +76,8 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('thumbnail'),
+                // Tables\Columns\ImageColumn::make('thumbnail'),
+                SpatieMediaLibraryImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'body'])->sortable(),
                 Tables\Columns\IconColumn::make('active')
                     ->sortable()

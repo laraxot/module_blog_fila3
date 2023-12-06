@@ -39,6 +39,8 @@ class CreatePostsTable extends XotBaseMigration
                 if (! $this->hasColumn('meta_description')) {
                     $table->string('meta_description', 255)->nullable();
                 }
+
+                $this->updateTimestamps($table);
             }
         );
     }

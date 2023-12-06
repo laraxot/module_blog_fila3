@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace Modules\Blog\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
+use Filament\Resources\Resource;
 use Modules\Blog\Models\TextWidget;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 class TextWidgetResource extends Resource
 {
@@ -27,7 +28,19 @@ class TextWidgetResource extends Resource
                 Forms\Components\TextInput::make('key')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('image'),
+                // Forms\Components\FileUpload::make('image'),
+                SpatieMediaLibraryFileUpload::make('image')
+                    // ->image()
+                    // ->maxSize(5000)
+                    // ->multiple()
+                    // ->enableReordering()
+                    ->enableOpen()
+                    ->enableDownload()
+                    ->columnSpanFull()
+                    // ->collection('avatars')
+                    // ->conversion('thumbnail')
+                    ->disk('uploads')
+                    ->directory('photos'),
                 Forms\Components\TextInput::make('title')
                     ->maxLength(2048),
                 Forms\Components\RichEditor::make('content'),

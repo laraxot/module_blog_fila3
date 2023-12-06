@@ -3,13 +3,16 @@
 declare(strict_types=1);
 
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Blog\Models\Category;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
  * Class CreateLiveuserUsersTable.
  */
-class CreateCategoryPostTable extends XotBaseMigration
+class CreateBlogCategoriesTable extends XotBaseMigration
 {
+    protected ?string $model_class = Category::class;
+
     /**
      * Run the migrations.
      */
@@ -19,8 +22,8 @@ class CreateCategoryPostTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table): void {
                 $table->id();
-                $table->foreignId('category_id'); // ->references('id')->on('categories')->onDelete('cascade');
-                $table->foreignId('post_id'); // ->references('id')->on('posts')->onDelete('cascade');
+                $table->string('title', 2048);
+                $table->string('slug', 2048);
                 $table->timestamps();
             }
         );
@@ -33,6 +36,7 @@ class CreateCategoryPostTable extends XotBaseMigration
                 // if (! $this->hasColumn('profile_photo_path')) {
                 //    $table->string('profile_photo_path', 2048)->nullable();
                 // }
+                $this->updateTimestamps($table);
             }
         );
     }

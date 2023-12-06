@@ -6,9 +6,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
- * Class CreatePostsTable.
+ * Class CreateLiveuserUsersTable.
  */
-class CreateTextWidgetsTable extends XotBaseMigration
+class CreateCategoryPostTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
@@ -19,23 +19,21 @@ class CreateTextWidgetsTable extends XotBaseMigration
         $this->tableCreate(
             function (Blueprint $table): void {
                 $table->id();
-                $table->string('key')->unique();
-                $table->string('image', 2048)->nullable();
-                $table->string('title', 2048)->nullable();
-                $table->longText('content')->nullable();
-                $table->boolean('active');
+                $table->foreignId('category_id'); // ->references('id')->on('categories')->onDelete('cascade');
+                $table->foreignId('post_id'); // ->references('id')->on('posts')->onDelete('cascade');
                 $table->timestamps();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
             function (Blueprint $table): void {
-                // if (! $this->hasColumn('parent_id')) {
-                //    $table->foreignId('parent_id')->nullable();
+                // if (! $this->hasColumn('current_team_id')) {
+                //    $table->foreignId('current_team_id')->nullable();
                 // }
                 // if (! $this->hasColumn('profile_photo_path')) {
                 //    $table->string('profile_photo_path', 2048)->nullable();
                 // }
+                $this->updateTimestamps($table);
             }
         );
     }
