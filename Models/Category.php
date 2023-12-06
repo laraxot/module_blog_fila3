@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int|null                                                                 $posts_count
  * @property \Illuminate\Database\Eloquent\Collection<int, \Modules\Blog\Models\Post> $publishedPosts
  * @property int|null                                                                 $published_posts_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Category   newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category   newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category   query()
@@ -29,13 +28,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Category   whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category   whereUpdatedAt($value)
  * @method static \Modules\Blog\Database\Factories\CategoryFactory factory($count = null, $state = [])
- *
  * @property string|null $updated_by
  * @property string|null $created_by
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedBy($value)
- *
  * @mixin \Eloquent
  */
 class Category extends EloquentModel
