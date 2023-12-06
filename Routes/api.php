@@ -15,4 +15,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/blog', fn(Request $request) => $request->user());
+Route::middleware('auth:api')->get('/blog', fn (Request $request) => $request->user());

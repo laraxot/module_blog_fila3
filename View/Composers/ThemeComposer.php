@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Blog\View\Composers;
 
-use Modules\Blog\Models\Post;
-use Illuminate\Support\Carbon;
-use Modules\Blog\Models\Category;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Modules\Blog\Models\Category;
+use Modules\Blog\Models\Post;
 
 class ThemeComposer
 {
@@ -26,59 +26,61 @@ class ThemeComposer
     /**
      * @return Post|null
      */
-    public function latestPost(){
-         // Latest post
-     $latestPost = Post::where('active', '=', 1)
-     ->whereDate('published_at', '<', Carbon::now())
-     ->orderBy('published_at', 'desc')
-     ->limit(1)
-     ->first();
+    public function latestPost()
+    {
+        // Latest post
+        $latestPost = Post::where('active', '=', 1)
+        ->whereDate('published_at', '<', Carbon::now())
+        ->orderBy('published_at', 'desc')
+        ->limit(1)
+        ->first();
 
-     return $latestPost;
+        return $latestPost;
     }
 
+    /**
+     * Show the most popular 3 posts based on upvotes.
+     *
+     * @return Collection<int, Post>
+     */
+    public function popularPosts()
+    {
+        $popularPosts = Post::query()
+            ->leftJoin('upvote_downvotes', 'posts.id', '=', 'upvote_downvotes.post_id')
+            ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+            ->where(function ($query) {
+                $query->whereNull('upvote_downvotes.is_upvote')
+                    ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+            })
+            ->where('active', '=', 1)
+            ->whereDate('published_at', '<', Carbon::now())
+            ->orderByDesc('upvote_count')
+            ->groupBy([
+                'posts.id',
+                'posts.title',
+                'posts.slug',
+                'posts.thumbnail',
+                'posts.body',
+                'posts.active',
+                'posts.published_at',
+                'posts.user_id',
+                'posts.created_at',
+                'posts.updated_at',
+                'posts.meta_title',
+                'posts.meta_description',
+            ])
+            ->limit(5)
+            ->get();
 
+        return $popularPosts;
+    }
 
-/**
- * Show the most popular 3 posts based on upvotes
- *
- * @return Collection<int, Post>
- */
- public function popularPosts(){
- $popularPosts = Post::query()
-     ->leftJoin('upvote_downvotes', 'posts.id', '=', 'upvote_downvotes.post_id')
-     ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
-     ->where(function ($query) {
-         $query->whereNull('upvote_downvotes.is_upvote')
-             ->orWhere('upvote_downvotes.is_upvote', '=', 1);
-     })
-     ->where('active', '=', 1)
-     ->whereDate('published_at', '<', Carbon::now())
-     ->orderByDesc('upvote_count')
-     ->groupBy([
-         'posts.id',
-         'posts.title',
-         'posts.slug',
-         'posts.thumbnail',
-         'posts.body',
-         'posts.active',
-         'posts.published_at',
-         'posts.user_id',
-         'posts.created_at',
-         'posts.updated_at',
-         'posts.meta_title',
-         'posts.meta_description',
-     ])
-     ->limit(5)
-     ->get();
-     return $popularPosts;
- }
-
-/**
- * @return Collection<int, Post>
- */
- public function recommendedPosts(){
- $user = auth()->user();
+    /**
+     * @return Collection<int, Post>
+     */
+    public function recommendedPosts()
+    {
+        $user = auth()->user();
 
         if ($user instanceof Authenticatable) {
             $leftJoin = '(SELECT cp.category_id, cp.post_id FROM upvote_downvotes
@@ -120,41 +122,41 @@ class ThemeComposer
                 ->limit(3)
                 ->get();
         }
+
         return $recommendedPosts;
     }
 
-
     /**
-     * Show recent categories with their latest posts
+     * Show recent categories with their latest posts.
      *
      * @return Collection<int, Category>
      */
-    public function categories(){
-    $categories = Category::query()
+    public function categories()
+    {
+        $categories = Category::query()
     //            ->with(['posts' => function ($query) {
     //                $query->orderByDesc('published_at');
     //            }])
-                ->whereHas('posts', function ($query) {
-                    $query
-                        ->where('active', '=', 1)
-                        ->whereDate('published_at', '<', Carbon::now());
-                })
-                ->select('categories.*')
-                ->selectRaw('MAX(posts.published_at) as max_date')
-                ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
-                ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
-                ->orderByDesc('max_date')
-                ->groupBy([
-                    'categories.id',
-                    'categories.title',
-                    'categories.slug',
-                    'categories.created_at',
-                    'categories.updated_at',
-                ])
-                ->limit(5)
-                ->get();
-                return $categories;
-}
+                    ->whereHas('posts', function ($query) {
+                        $query
+                            ->where('active', '=', 1)
+                            ->whereDate('published_at', '<', Carbon::now());
+                    })
+                    ->select('categories.*')
+                    ->selectRaw('MAX(posts.published_at) as max_date')
+                    ->leftJoin('category_post', 'categories.id', '=', 'category_post.category_id')
+                    ->leftJoin('posts', 'posts.id', '=', 'category_post.post_id')
+                    ->orderByDesc('max_date')
+                    ->groupBy([
+                        'categories.id',
+                        'categories.title',
+                        'categories.slug',
+                        'categories.created_at',
+                        'categories.updated_at',
+                    ])
+                    ->limit(5)
+                    ->get();
 
-
+        return $categories;
+    }
 }

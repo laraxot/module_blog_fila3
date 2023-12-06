@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources;
 
-use Modules\Blog\Filament\Resources\CategoryResource\Pages;
-use Modules\Blog\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Modules\Blog\Filament\Resources\CategoryResource\Pages;
+use Modules\Blog\Models\Category;
 
 class CategoryResource extends Resource
 {
@@ -47,7 +49,6 @@ class CategoryResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

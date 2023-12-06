@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Http\Middleware;
 
-use Exception;
-use Str;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Nwidart\Modules\Laravel\Module;
@@ -13,7 +11,7 @@ use Nwidart\Modules\Laravel\Module;
 class FilamentMiddleware extends Middleware
 {
     public static string $module = 'Blog';
-    
+
     public static string $context = 'filament';
 
     private function getModule(): Module
@@ -22,16 +20,16 @@ class FilamentMiddleware extends Middleware
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     private function getContextName(): string
     {
         $module = $this->getModule();
-        if (static::$context === '' || static::$context === '0') {
-            throw new Exception('Context has to be defined in your class');
+        if ('' === static::$context || '0' === static::$context) {
+            throw new \Exception('Context has to be defined in your class');
         }
 
-        return Str::of($module->getLowerName())->append('-')->append(Str::slug(static::$context))->kebab()->toString();
+        return \Str::of($module->getLowerName())->append('-')->append(\Str::slug(static::$context))->kebab()->toString();
     }
 
     protected function authenticate($request, array $guards): void

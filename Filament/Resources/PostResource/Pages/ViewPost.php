@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources\PostResource\Pages;
 
-use Modules\Blog\Filament\Resources\PostResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ViewRecord;
+use Modules\Blog\Filament\Resources\PostResource;
 
 class ViewPost extends ViewRecord
 {

@@ -1,23 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Models;
 
-use Webmozart\Assert\Assert;
-use Illuminate\Support\Facades\Cache;
-use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Cache;
+use Webmozart\Assert\Assert;
 
 /**
- * Modules\Blog\Models\TextWidget
+ * Modules\Blog\Models\TextWidget.
  *
- * @property int $id
- * @property string $key
- * @property string|null $image
- * @property string|null $title
- * @property string|null $content
- * @property int $active
+ * @property int                             $id
+ * @property string                          $key
+ * @property string|null                     $image
+ * @property string|null                     $title
+ * @property string|null                     $content
+ * @property int                             $active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget query()
@@ -29,6 +31,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TextWidget whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class TextWidget extends EloquentModel
@@ -61,12 +64,13 @@ class TextWidget extends EloquentModel
 
     public static function getContent(string $key): ?string
     {
-        $widget = Cache::get('text-widget-' . $key, fn () => TextWidget::query()->where('key', $key)->first());
+        $widget = Cache::get('text-widget-'.$key, fn () => TextWidget::query()->where('key', $key)->first());
 
         if (! $widget) {
             return '';
         }
         Assert::isInstanceOf($widget, TextWidget::class);
+
         return $widget->content;
     }
 }

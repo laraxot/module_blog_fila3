@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources;
 
-use Modules\Blog\Filament\Resources\PostResource\Pages;
-use Modules\Blog\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Modules\Blog\Filament\Resources\PostResource\Pages;
+use Modules\Blog\Models\Post;
 
 class PostResource extends Resource
 {
@@ -70,7 +72,6 @@ class PostResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -85,17 +86,16 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListPosts::route('/'),
+            'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'view'   => Pages\ViewPost::route('/{record}'),
-            'edit'   => Pages\EditPost::route('/{record}/edit'),
+            'view' => Pages\ViewPost::route('/{record}'),
+            'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }
 }

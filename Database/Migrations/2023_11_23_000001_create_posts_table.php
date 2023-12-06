@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Modules\User\Models\User;
 use Illuminate\Database\Schema\Blueprint;
+use Modules\User\Models\User;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
@@ -13,14 +13,12 @@ class CreatePostsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 $table->id();
                 $table->string('title', 2048);
                 $table->string('slug', 2048);
@@ -34,12 +32,12 @@ class CreatePostsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 if (! $this->hasColumn('meta_title')) {
                     $table->string('meta_title', 255)->nullable();
                 }
                 if (! $this->hasColumn('meta_description')) {
-                   $table->string('meta_description', 255)->nullable();
+                    $table->string('meta_description', 255)->nullable();
                 }
             }
         );

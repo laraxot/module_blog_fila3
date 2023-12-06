@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Modules\User\Models\User;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
@@ -13,24 +12,22 @@ class CreateUpvoteDownvotesTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 $table->id();
                 $table->boolean('is_upvote');
-                $table->foreignId('post_id'); //->references('id')->on('posts')->onDelete('cascade');
-                $table->foreignId('user_id'); //->references('id')->on('users')->onDelete('cascade');
+                $table->foreignId('post_id'); // ->references('id')->on('posts')->onDelete('cascade');
+                $table->foreignId('user_id'); // ->references('id')->on('users')->onDelete('cascade');
                 $table->timestamps();
             }
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 // if (! $this->hasColumn('parent_id')) {
                 //    $table->foreignId('parent_id')->nullable();
                 // }

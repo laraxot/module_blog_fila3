@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
-use Modules\Blog\Filament\Resources\TextWidgetResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Modules\Blog\Filament\Resources\TextWidgetResource;
 
 class EditTextWidget extends EditRecord
 {

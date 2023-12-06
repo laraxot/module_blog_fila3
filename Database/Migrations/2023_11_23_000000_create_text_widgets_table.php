@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Modules\User\Models\User;
 use Illuminate\Database\Schema\Blueprint;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
@@ -13,14 +12,12 @@ class CreateTextWidgetsTable extends XotBaseMigration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         // -- CREATE --
         $this->tableCreate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 $table->id();
                 $table->string('key')->unique();
                 $table->string('image', 2048)->nullable();
@@ -32,7 +29,7 @@ class CreateTextWidgetsTable extends XotBaseMigration
         );
         // -- UPDATE --
         $this->tableUpdate(
-            function (Blueprint $table) : void {
+            function (Blueprint $table): void {
                 // if (! $this->hasColumn('parent_id')) {
                 //    $table->foreignId('parent_id')->nullable();
                 // }
