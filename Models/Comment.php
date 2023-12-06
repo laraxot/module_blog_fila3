@@ -21,7 +21,6 @@ use Modules\User\Models\User;
  * @property Comment|null                    $parentComment
  * @property \Modules\Blog\Models\Post|null  $post
  * @property User|null                       $user
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
@@ -32,12 +31,9 @@ use Modules\User\Models\User;
  * @method static \Illuminate\Database\Eloquent\Builder|Comment wherePostId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
- *
  * @property \Illuminate\Database\Eloquent\Collection<int, Comment> $comments
  * @property int|null                                               $comments_count
- *
  * @method static \Modules\Blog\Database\Factories\CommentFactory factory($count = null, $state = [])
- *
  * @mixin \Eloquent
  */
 class Comment extends EloquentModel
