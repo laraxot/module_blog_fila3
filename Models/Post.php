@@ -95,8 +95,9 @@ class Post extends EloquentModel implements HasMedia
 
     public function getThumbnail(): ?string
     {
-        if($this->getMedia()->first() != null){
+        if (null != $this->getMedia()->first()) {
             $url = $this->getMedia()->first()->getUrl();
+
             return $url;
         }
 
