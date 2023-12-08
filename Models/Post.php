@@ -95,11 +95,17 @@ class Post extends EloquentModel implements HasMedia
 
     public function getThumbnail(): ?string
     {
-        if (str_starts_with((string) $this->thumbnail, 'http')) {
-            return $this->thumbnail;
+        if($this->getMedia()->first() != null){
+            $url = $this->getMedia()->first()->getUrl();
+            return $url;
         }
 
-        return '/storage/'.$this->thumbnail;
+        return '#';
+        // if (str_starts_with((string) $this->thumbnail, 'http')) {
+        //     return $this->thumbnail;
+        // }
+
+        // return '/storage/'.$this->thumbnail;
     }
 
     public function humanReadTime(): Attribute
