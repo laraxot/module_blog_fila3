@@ -34,3 +34,4 @@ build
 *.phar
 *.cache
 *.log
+*.lock
