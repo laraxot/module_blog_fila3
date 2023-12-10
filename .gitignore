@@ -30,3 +30,7 @@ package-lock.json
 build
 /docs/package-lock.json
 .git-blame-ignore-revs
+/vendor
+*.phar
+*.cache
+*.log
