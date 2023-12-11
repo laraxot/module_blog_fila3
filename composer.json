@@ -44,7 +44,8 @@
         "vimeo/psalm": "^5.17",
         "psalm/plugin-laravel": "^2.8",
         "enlightn/enlightn": "^2.7",
-        "driftingly/rector-laravel": "*"
+        "driftingly/rector-laravel": "^0.26.2",
+        "symplify/phpstan-rules": "*"
     },
     "config": {
         "allow-plugins": {
