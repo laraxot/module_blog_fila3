@@ -19,5 +19,19 @@
         "psr-4": {
             "Modules\\Blog\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../Xot"
+        },
+        {
+            "type": "path",
+            "url": "../Tenant"
+        },
+        {
+            "type": "path",
+            "url": "../UI"
+        }
+    ]
 }
