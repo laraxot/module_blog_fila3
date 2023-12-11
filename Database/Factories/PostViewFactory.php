@@ -25,7 +25,7 @@ class PostViewFactory extends Factory
     {
         return [
             'ip_address' => $this->faker->word,
-            //'user_agent' => $this->faker->useragent,
+            // 'user_agent' => $this->faker->useragent,
             'post_id' => $this->faker->randomNumber(5),
             'user_id' => $this->faker->randomNumber(5),
         ];
