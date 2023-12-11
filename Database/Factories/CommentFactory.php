@@ -25,9 +25,9 @@ class CommentFactory extends Factory
     {
         return [
             'comment' => $this->faker->text,
-            'post_id' => $this->faker->integer,
-            'user_id' => $this->faker->integer,
-            'parent_id' => $this->faker->integer,
+            'post_id' => $this->faker->randomNumber(5),
+            'user_id' => $this->faker->randomNumber(5),
+            'parent_id' => $this->faker->randomNumber(5),
         ];
     }
 }

@@ -25,8 +25,8 @@ class UpvoteDownvoteFactory extends Factory
     {
         return [
             'is_upvote' => $this->faker->boolean,
-            'post_id' => $this->faker->integer,
-            'user_id' => $this->faker->integer,
+            'post_id' => $this->faker->randomNumber(5),
+            'user_id' => $this->faker->randomNumber(5),
         ];
     }
 }

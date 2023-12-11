@@ -28,7 +28,7 @@ class PostFactory extends Factory
             'slug' => $this->faker->slug,
             'thumbnail' => $this->faker->word,
             'body' => $this->faker->text,
-            'user_id' => $this->faker->integer,
+            'user_id' => $this->faker->randomNumber(5),
             'active' => $this->faker->boolean,
             'published_at' => $this->faker->dateTime,
             'meta_title' => $this->faker->word,
