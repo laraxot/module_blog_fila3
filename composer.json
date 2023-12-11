@@ -33,5 +33,22 @@
             "type": "path",
             "url": "../UI"
         }
-    ]
+    ],
+    "require": {
+        "thecodingmachine/safe": "^2.5"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "nunomaduro/phpinsights": "^2.11",
+        "larastan/larastan": "^2.7",
+        "vimeo/psalm": "^5.17",
+        "psalm/plugin-laravel": "^2.8",
+        "enlightn/enlightn": "^2.7",
+        "driftingly/rector-laravel": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }
