@@ -35,3 +35,4 @@ build
 *.cache
 *.log
 *.lock
+.git-blame-ignore-revs
