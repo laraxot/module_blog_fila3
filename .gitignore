@@ -36,3 +36,4 @@ build
 *.log
 *.lock
 .git-blame-ignore-revs
+package-lock.json
