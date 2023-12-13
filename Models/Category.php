@@ -38,7 +38,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  *
  * @mixin \Eloquent
  */
-class Category extends EloquentModel
+class Category extends BaseModel
 {
     protected $fillable = ['title', 'slug'];
 

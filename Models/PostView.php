@@ -31,7 +31,7 @@ use Illuminate\Support\Carbon;
  *
  * @mixin \Eloquent
  */
-class PostView extends EloquentModel
+class PostView extends BaseModel
 {
     protected $fillable = [
         'ip_address',

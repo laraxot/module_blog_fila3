@@ -31,7 +31,7 @@ namespace Modules\Blog\Models;
  *
  * @mixin \Eloquent
  */
-class CategoryPost extends EloquentModel
+class CategoryPost extends BasePivot
 {
-    protected $fillable = [''];
+    protected $fillable = ['category_id', 'post_id'];
 }

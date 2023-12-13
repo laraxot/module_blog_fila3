@@ -40,7 +40,7 @@ use Modules\User\Models\User;
  *
  * @mixin \Eloquent
  */
-class Comment extends EloquentModel
+class Comment extends BaseModel
 {
     protected $fillable = [
         'comment',
@@ -61,7 +61,7 @@ class Comment extends EloquentModel
 
     public function parentComment(): BelongsTo
     {
-        return $this->belongsTo(Comment::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     public function comments(): HasMany
@@ -70,7 +70,7 @@ class Comment extends EloquentModel
         //     $query->whereNotNull('parent_id')->orderBy('created_at', 'desc');
         // });
 
-        return $this->hasMany(Comment::class)
+        return $this->hasMany(self::class)
             ->whereNotNull('parent_id')
             ->orderBy('created_at', 'desc');
     }

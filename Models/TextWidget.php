@@ -44,7 +44,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin \Eloquent
  */
-class TextWidget extends EloquentModel implements HasMedia
+class TextWidget extends BaseModel implements HasMedia
 {
     use InteractsWithMedia;
 
@@ -58,7 +58,7 @@ class TextWidget extends EloquentModel implements HasMedia
 
     public static function getTitle(string $key): ?string
     {
-        $widget = TextWidget::query()->where('key', $key)->first();
+        $widget = self::query()->where('key', $key)->first();
 
         if (! $widget) {
             return '';
@@ -69,12 +69,12 @@ class TextWidget extends EloquentModel implements HasMedia
 
     public static function getContent(string $key): ?string
     {
-        $widget = Cache::get('text-widget-'.$key, fn () => TextWidget::query()->where('key', $key)->first());
+        $widget = Cache::get('text-widget-'.$key, fn () => self::query()->where('key', $key)->first());
 
         if (! $widget) {
             return '';
         }
-        Assert::isInstanceOf($widget, TextWidget::class);
+        Assert::isInstanceOf($widget, self::class);
 
         return $widget->content;
     }

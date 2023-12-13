@@ -27,7 +27,7 @@ namespace Modules\Blog\Models;
  *
  * @mixin \Eloquent
  */
-class UpvoteDownvote extends EloquentModel
+class UpvoteDownvote extends BaseModel
 {
     protected $fillable = ['is_upvote', 'post_id', 'user_id'];
 }

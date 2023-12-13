@@ -61,7 +61,7 @@ use Webmozart\Assert\Assert;
  *
  * @mixin \Eloquent
  */
-class Post extends EloquentModel implements HasMedia
+class Post extends BaseModel implements HasMedia
 {
     use InteractsWithMedia;
 
@@ -95,7 +95,7 @@ class Post extends EloquentModel implements HasMedia
 
     public function getThumbnail(): ?string
     {
-        if (null != $this->getMedia()->first()) {
+        if (null !== $this->getMedia()->first()) {
             $url = $this->getMedia()->first()->getUrl();
 
             return $url;
