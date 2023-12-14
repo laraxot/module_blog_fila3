@@ -1,6 +1,6 @@
-<article class="bg-white    flex flex-col shadow my-4">
+<article class="bg-white flex flex-col shadow my-4">
     <!-- Article Image -->
-    <a href="{{-- route('view',$article) --}}" class="hover:opacity-75">
+    <a href="{{ $this->url('show', ['record' => $article]) }}" class="hover:opacity-75">
         <img src="{{$article->getThumbnail()}}" alt="{{$article->title}}" class="aspect-[4/3] object-contain">
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
@@ -11,7 +11,7 @@
                 </a>
             @endforeach
         </div>
-        <a href="{{-- route('view',$article) --}}" class="text-3xl font-bold hover:text-gray-700 pb-4">
+        <a href="{{ $this->url('show', ['record' => $article]) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">
             {{$article->title}}
         </a>
         @if ($showAuthor)
@@ -20,10 +20,10 @@
                 {{$article->getFormattedDate()}} | {{ $article->human_read_time }}
             </p>
         @endif
-        <a href="{{-- route('view',$article) --}}" class="pb-6">
+        <a href="{{ $this->url('show', ['record' => $article]) }}" class="pb-6">
             {{$article->shortBody()}}
         </a>
-        <a  href="{{-- route('view',$article) --}}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
+        <a  href="{{ $this->url('show', ['record' => $article]) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
                 class="fas fa-arrow-right"></i></a>
     </div>
 </article>
