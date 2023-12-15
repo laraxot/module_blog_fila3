@@ -1,10 +1,13 @@
 {
-    "name": "nwidart/blog",
+    "name": "laraxot/module_blog_fila3",
     "description": "",
+    "homepage": "https://github.com/laraxot/module_blog_fila3",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "marco sottana",
+            "email": "marco.sottana@gmail.com",
+            "role": "Developer"
         }
     ],
     "extra": {
