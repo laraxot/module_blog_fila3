@@ -46,7 +46,6 @@ class Leaderboard
                 // ]),
 
                 Select::make('_tpl')
-
                     ->options($views)
                     ->default('v1')
                     ->required(),

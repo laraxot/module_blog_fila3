@@ -9,6 +9,8 @@ use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Support\Str;
 use Modules\Blog\Filament\Fields\ArticleContent;
@@ -42,7 +44,7 @@ class ArticleResource extends XotBaseResource
                     ->columnSpan(1)
                     ->required()
                     ->lazy()
-                    ->afterStateUpdated(static function ($set, $get, $state): void {
+                    ->afterStateUpdated(static function (Set $set, Get $get, string $state): void {
                         if ($get('slug')) {
                             return;
                         }

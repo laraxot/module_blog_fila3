@@ -41,24 +41,24 @@ class ShowArticleCommand extends Command
         $header = ['id', 'title', 'is_winner', 'count', 'sum', 'avg', 'tot'];
         $rows = [];
         foreach ($ratings as $rating) {
-            $tmp = $article->loadSum(['ratings as value_sum' => static function ($query) use ($rating): void {
+            $tmp = $article->loadSum(['ratings as value_sum' => static function (\Illuminate\Database\Eloquent\Builder $query) use ($rating): void {
                 $query
                     ->where('ratings.id', $rating->id)
                     ->where('rating_morph.user_id', '!=', null);
             }], 'rating_morph.value')
-                ->loadSum(['ratings as value_tot' => static function ($query) use ($ratings): void {
+                ->loadSum(['ratings as value_tot' => static function (\Illuminate\Database\Eloquent\Builder $query) use ($ratings): void {
                     $query
                         ->whereIn('ratings.id', $ratings->modelKeys())
                         ->where('rating_morph.user_id', '!=', null);
                 }], 'rating_morph.value')
             /*
-            ->loadAvg(['ratings as value_avg' => static function ($query) use ($rating) {
+            ->loadAvg(['ratings as value_avg' => static function (\Illuminate\Database\Eloquent\Builder $query) use ($rating) {
                 $query
                     ->where('ratings.id', $rating->id)
                     ->where('rating_morph.user_id', '!=', null);
             }], 'rating_morph.value')
             */
-                ->loadCount(['ratings as value_count' => static function ($query) use ($rating): void {
+                ->loadCount(['ratings as value_count' => static function (\Illuminate\Database\Eloquent\Builder $query) use ($rating): void {
                     $query
                         ->where('ratings.id', $rating->id)
                         ->where('rating_morph.user_id', '!=', null);

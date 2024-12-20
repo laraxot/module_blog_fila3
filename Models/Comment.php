@@ -130,7 +130,7 @@ class Comment extends BaseModel
     /* -- to comment module
     public function comments(): HasMany
     {
-        // return $this->hasMany(Comment::class, function ($query) {
+        // return $this->hasMany(Comment::class, function (\Illuminate\Database\Eloquent\Builder $query) {
         //     $query->whereNotNull('parent_id')->orderBy('created_at', 'desc');
         // });
 
