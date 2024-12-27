@@ -18,6 +18,7 @@ class RouteServiceProvider extends XotBaseRouteServiceProvider
     protected string $module_dir = __DIR__;
 
     protected string $module_ns = __NAMESPACE__;
+    public string $name = 'Blog';
 
     public function boot(): void
     {
