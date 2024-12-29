@@ -1,20 +1,21 @@
-<?php
-
-declare(strict_types=1);
-
-return [
-    'fields' => [
-        'title' => [
-            'label' => 'title',
-        ],
-        'sub_title' => [
-            'label' => 'sub_title',
-        ],
-        'limit' => [
-            'label' => 'limit',
-        ],
-        '_tpl' => [
-            'label' => '_tpl',
-        ],
-    ],
-];
+<?php return array (
+  'fields' => 
+  array (
+    'title' => 
+    array (
+      'label' => 'title',
+    ),
+    'sub_title' => 
+    array (
+      'label' => 'sub_title',
+    ),
+    'limit' => 
+    array (
+      'label' => 'limit',
+    ),
+    '_tpl' => 
+    array (
+      'label' => '_tpl',
+    ),
+  ),
+);

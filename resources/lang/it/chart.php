@@ -1,11 +1,9 @@
-<?php
-
-declare(strict_types=1);
-
-return [
-    'fields' => [
-        'chart_type' => [
-            'label' => 'chart_type',
-        ],
-    ],
-];
+<?php return array (
+  'fields' => 
+  array (
+    'chart_type' => 
+    array (
+      'label' => 'chart_type',
+    ),
+  ),
+);
