@@ -29,22 +29,22 @@
     ),
     'title' => 
     array (
-      'label' => 'Titolo',
+      'label' => 'title',
     ),
     'category' => 
     array (
       'title' => 
       array (
-        'label' => 'Categoria',
+        'label' => 'category.title',
       ),
     ),
     'published_at' => 
     array (
-      'label' => 'Publicato il',
+      'label' => 'published_at',
     ),
     'closed_at' => 
     array (
-      'label' => 'Chiuso il',
+      'label' => 'closed_at',
     ),
     'rewarded_at' => 
     array (
@@ -52,7 +52,7 @@
     ),
     'is_featured' => 
     array (
-      'label' => 'In primo piano',
+      'label' => 'is_featured',
     ),
     'Categoria' => 
     array (
