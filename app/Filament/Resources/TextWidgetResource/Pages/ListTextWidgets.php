@@ -6,7 +6,7 @@ namespace Modules\Blog\Filament\Resources\TextWidgetResource\Pages;
 
 use Filament\Pages\Actions;
 use Modules\Blog\Filament\Resources\TextWidgetResource;
-use Modules\Xot\Filament\Pages\XotBaseListRecords;
+use Modules\Xot\Filament\Resources\Pages\XotBaseListRecords;
 
 class ListTextWidgets extends XotBaseListRecords
 {
