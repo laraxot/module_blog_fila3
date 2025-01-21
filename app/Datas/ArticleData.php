@@ -15,6 +15,7 @@ use Spatie\LaravelData\Attributes\WithCast;
 use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Optional;
 use Modules\Blog\Enums\ArticleStatus;
+use DateTimeImmutable;
 
 class ArticleData extends Data implements \Stringable
 {

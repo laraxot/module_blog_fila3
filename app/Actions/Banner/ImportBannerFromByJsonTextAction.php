@@ -66,4 +66,42 @@ class ImportBannerFromByJsonTextAction
             // $banner->addMediaFromUrl($j['desktop_thumbnail']);
         }
     }
+
+    public function execute1(array $data): void
+    {
+        $banner = new Banner();
+
+        if (isset($data['start_date'])) {
+            $banner->start_date = Carbon::parse($data['start_date']);
+        }
+
+        if (isset($data['end_date'])) {
+            $banner->end_date = Carbon::parse($data['end_date']);
+        }
+
+        if (isset($data['category_dict'])) {
+            $banner->category_dict = $data['category_dict'];
+        }
+
+        if (isset($data['title'])) {
+            $banner->title = $data['title'];
+        }
+
+        if (isset($data['slug'])) {
+            $banner->slug = $data['slug'];
+        }
+
+        $banner->save();
+
+        // Gestione traduzioni
+        if (isset($data['title'])) {
+            $banner->setTranslation('title', 'it', $data['title']);
+        }
+
+        if (isset($data['action_text'])) {
+            $banner->setTranslation('action_text', 'it', $data['action_text']);
+        }
+
+        $banner->save();
+    }
 }

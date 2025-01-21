@@ -56,18 +56,18 @@ class ImportArticlesFromByJsonTextAction
         $article->title = $data->title;
         $article->slug = $data->slug;
         $article->status = $data->status->value;
-        $article->status_display = $data->status_display;
-        $article->bet_end_date = $data->bet_end_date;
-        $article->event_start_date = $data->event_start_date;
-        $article->event_end_date = $data->event_end_date;
-        $article->is_wagerable = $data->is_wagerable;
-        $article->brier_score = $data->brier_score;
-        $article->brier_score_play_money = $data->brier_score_play_money;
-        $article->brier_score_real_money = $data->brier_score_real_money;
+        $article->status_display = (int)$data->status_display;
+        $article->bet_end_date = $data->bet_end_date?->format('Y-m-d H:i:s');
+        $article->event_start_date = $data->event_start_date?->format('Y-m-d H:i:s');
+        $article->event_end_date = $data->event_end_date?->format('Y-m-d H:i:s');
+        $article->is_wagerable = (int)$data->is_wagerable;
+        $article->brier_score = (string)$data->brier_score;
+        $article->brier_score_play_money = (string)$data->brier_score_play_money;
+        $article->brier_score_real_money = (string)$data->brier_score_real_money;
         $article->wagers_count = $data->wagers_count;
         $article->wagers_count_canonical = $data->wagers_count_canonical;
         $article->wagers_count_total = $data->wagers_count_total;
-        $article->wagers = $data->wagers;
+        $article->wagers = null;
         $article->volume_play_money = $data->volume_play_money;
         $article->volume_real_money = $data->volume_real_money;
 

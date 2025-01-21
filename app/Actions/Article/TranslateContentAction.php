@@ -8,6 +8,7 @@ use Modules\Blog\Models\Article;
 use Modules\Xot\Actions\GetModelByModelTypeAction;
 use Modules\Xot\Actions\GetModelClassByModelTypeAction;
 use Webmozart\Assert\Assert;
+use Illuminate\Database\Eloquent\Model;
 
 class TranslateContentAction
 {
@@ -60,4 +61,5 @@ class TranslateContentAction
 
         $model->update();
     }
+
 }
