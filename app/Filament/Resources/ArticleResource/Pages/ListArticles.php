@@ -24,66 +24,29 @@ class ListArticles extends XotBaseListRecords
 
     // protected static string $resource = ArticleResource::class;
 
+    /**
+     * @return array<string, \Filament\Tables\Columns\Column>
+     */
     public function getListTableColumns(): array
     {
-        return
-        [
-            Tables\Columns\TextColumn::make('id'),
-            Tables\Columns\TextColumn::make('title')
+        return [
+            'id' => Tables\Columns\TextColumn::make('id'),
+            'title' => Tables\Columns\TextColumn::make('title')
                 ->wrap()
                 ->sortable()
                 ->searchable(),
-
-            Tables\Columns\TextColumn::make('category.title')
+            'category' => Tables\Columns\TextColumn::make('category.title')
                 ->sortable()
                 ->searchable(),
-            Tables\Columns\TextColumn::make('published_at')
+            'published_at' => Tables\Columns\TextColumn::make('published_at')
                 ->dateTime()
                 ->sortable(),
-
-            Tables\Columns\TextColumn::make('closed_at')
+            'closed_at' => Tables\Columns\TextColumn::make('closed_at')
                 ->dateTime()
                 ->sortable(),
-            // Tables\Columns\TextColumn::make('rewarded_at')
-            //    ->dateTime()
-            //    ->sortable(),
-
-            Tables\Columns\IconColumn::make('is_featured')
+            'is_featured' => Tables\Columns\IconColumn::make('is_featured')
                 ->boolean()
                 ->sortable(),
-
-            // Tables\Columns\TextColumn::make('id')
-            //
-            //     ->formatStateUsing(function ($state, Article $article) {
-            //         return $article->title . ' ' . $article->category->title;
-            //     }),
-
-            // Tables\Columns\ViewColumn::make('info')
-            //     ->view('blog::filament.tables.columns.article.info'),
-            // Tables\Columns\ViewColumn::make('status')
-            //     ->view('blog::filament.tables.columns.article.status'),
-
-            // Tables\Columns\Layout\Split::make([
-            //     // Tables\Columns\TextColumn::make('id'),
-            //     Tables\Columns\TextColumn::make('title')
-            //         ->sortable()
-            //         ->searchable(),
-
-            //     Tables\Columns\TextColumn::make('category.title')
-            //         ->sortable()
-            //         ->searchable(),
-            // ]),
-            // Tables\Columns\Layout\Split::make([
-            //     Tables\Columns\TextColumn::make('published_at')
-            //         ->dateTime()
-            //         ->sortable(),
-            //     Tables\Columns\TextColumn::make('closed_at')
-            //         ->dateTime()
-            //         ->sortable(),
-            //     Tables\Columns\IconColumn::make('is_featured')
-            //         ->boolean()
-            //         ->sortable(),
-            // ]),
         ];
     }
 
