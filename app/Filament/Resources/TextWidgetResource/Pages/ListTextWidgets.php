@@ -18,4 +18,9 @@ class ListTextWidgets extends XotBaseListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function getListTableColumns(): array
+    {
+        return [];
+    }
 }

@@ -36,7 +36,7 @@ class ArticleResource extends XotBaseResource
         return ['it', 'en'];
     }
 
-    public static function getFormFields(): array
+    public static function getFormSchema(): array
     {
         return [
             Forms\Components\Grid::make()->columns(2)->schema([
@@ -169,10 +169,10 @@ class ArticleResource extends XotBaseResource
         ];
     }
 
-    public static function form(Form $form): Form
-    {
-        return $form->schema(static::getFormFields());
-    }
+    // public static function form(Form $form): Form
+    // {
+    //     return $form->schema(static::getFormFields());
+    // }
 
     public static function getRelations(): array
     {
