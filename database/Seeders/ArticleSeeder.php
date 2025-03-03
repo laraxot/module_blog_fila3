@@ -10,6 +10,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Modules\Blog\Models\Article;
 use Modules\Blog\Models\Category;
+use Webmozart\Assert\Assert;
 
 class ArticleSeeder extends Seeder
 {
@@ -27,6 +28,7 @@ class ArticleSeeder extends Seeder
         $this->date = Carbon::now();
 
         foreach ($this->categories as $category) {
+            Assert::isArray($category);
             Category::create([
                 'title' => $category['name'],
                 'slug' => Str::slug($category['name']),
