@@ -1,52 +1,43 @@
-<?php return array (
-  'navigation' => 
-  array (
-    'name' => 'Banner',
-    'plural' => 'Banners',
-    'group' => 
-    array (
-      'name' => 'Content',
-    ),
-  ),
-  'fields' => 
-  array (
-    'id' => 
-    array (
-      'label' => 'Id',
-    ),
-    'title' => 
-    array (
-      'label' => 'Titolo',
-    ),
-    'category' => 
-    array (
-      'title' => 
-      array (
-        'label' => 'Categoria abbinata',
-      ),
-    ),
-    'image' => 
-    array (
-      'label' => 'Immagine',
-    ),
-    'file' => 
-    array (
-      'label' => 'file',
-    ),
-    'fileContent' => 
-    array (
-      'label' => 'fileContent',
-    ),
-  ),
-  'actions' => 
-  array (
-    'create' => 
-    array (
-      'label' => 'create',
-    ),
-    'import' => 
-    array (
-      'label' => 'import',
-    ),
-  ),
-);
+<?php
+
+declare(strict_types=1);
+
+return [
+    'navigation' => [
+        'name' => 'Banner',
+        'plural' => 'Banners',
+        'group' => [
+            'name' => 'Content',
+        ],
+    ],
+    'fields' => [
+        'id' => [
+            'label' => 'Id',
+        ],
+        'title' => [
+            'label' => 'Titolo',
+        ],
+        'category' => [
+            'title' => [
+                'label' => 'Categoria abbinata',
+            ],
+        ],
+        'image' => [
+            'label' => 'Immagine',
+        ],
+        'file' => [
+            'label' => 'file',
+        ],
+        'fileContent' => [
+            'label' => 'fileContent',
+        ],
+    ],
+    'actions' => [
+        'create' => [
+            'label' => 'create',
+        ],
+        'import' => [
+            'label' => 'import',
+        ],
+    ],
+];

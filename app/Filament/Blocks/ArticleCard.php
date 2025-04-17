@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace Modules\Blog\Filament\Blocks;
 
-use Modules\Blog\Models\Article;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Builder\Block;
+use Modules\Blog\Models\Article;
 use Modules\Xot\Filament\Blocks\XotBaseBlock;
 
 class ArticleCard // extends XotBaseBlock
-{
-
-    
-    // public static function getBlockSchema(): array
+{// public static function getBlockSchema(): array
     // {
     //     return [
     //         Select::make('article_id')

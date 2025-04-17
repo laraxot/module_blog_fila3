@@ -1,28 +1,25 @@
-<?php return array (
-  'actions' => 
-  array (
-    'activeLocale' => 
-    array (
-      'label' => 'activeLocale',
-    ),
-    'edit' => 
-    array (
-      'label' => 'edit',
-    ),
-    'delete' => 
-    array (
-      'label' => 'delete',
-    ),
-    'change_closed_at' => 
-    array (
-      'label' => 'change_closed_at',
-    ),
-  ),
-  'fields' => 
-  array (
-    'closed_at' => 
-    array (
-      'label' => 'closed_at',
-    ),
-  ),
-);
+<?php
+
+declare(strict_types=1);
+
+return [
+    'actions' => [
+        'activeLocale' => [
+            'label' => 'activeLocale',
+        ],
+        'edit' => [
+            'label' => 'edit',
+        ],
+        'delete' => [
+            'label' => 'delete',
+        ],
+        'change_closed_at' => [
+            'label' => 'change_closed_at',
+        ],
+    ],
+    'fields' => [
+        'closed_at' => [
+            'label' => 'closed_at',
+        ],
+    ],
+];

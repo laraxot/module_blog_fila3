@@ -1,9 +1,11 @@
-<?php return array (
-  'fields' => 
-  array (
-    'content_blocks' => 
-    array (
-      'label' => 'content_blocks',
-    ),
-  ),
-);
+<?php
+
+declare(strict_types=1);
+
+return [
+    'fields' => [
+        'content_blocks' => [
+            'label' => 'content_blocks',
+        ],
+    ],
+];
